@@ -1,0 +1,607 @@
+fileFormatVersion: 2
+guid: a02a8d7261703d148b55384aaddca493
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Trees_Alt_118
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 93
+        width: 70
+        height: 94
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3974e67e1006e1e4f830d855a5fc6b5d
+      internalID: 335428327
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Trees_Alt_120
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 96
+        width: 86
+        height: 112
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9dc688affc7c3264185a0cb4d48b698c
+      internalID: 605455274
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Trees_Alt_122
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 95
+        width: 80
+        height: 107
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9636c64cd4d05fe4f82fa9f2a95c17d6
+      internalID: 204045265
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Trees_Alt_124
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 94
+        width: 66
+        height: 130
+      alignment: 9
+      pivot: {x: 0.46433696, y: 0.07149482}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dcd12ccd4e325e349b5b22f191d5e2d8
+      internalID: -1870204343
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Trees_Alt_126
+      rect:
+        serializedVersion: 2
+        x: 374
+        y: 95
+        width: 67
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3edbcc79dd4833f4084d305207528d0e
+      internalID: 1247735834
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Trees_Alt_134
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 64
+        width: 48
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2573aba1526f904eb38b4e0f8fef7c3
+      internalID: 2120943351
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Trees_Alt_137
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 64
+        width: 32
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f0a82f3e80dd2f42ad9c32b05904c6d
+      internalID: -1391938217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Trees_Alt_139
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 64
+        width: 48
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3eb7065a12637145b044ebb53f5d2c5
+      internalID: -536897441
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Trees_Alt_156
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 32
+        width: 48
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d52b5b057cb512e42aeebf5231d456e9
+      internalID: -1380774809
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Trees_Alt_159
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 32
+        width: 32
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93f99442ebbc13e4d8d48d5cc4455417
+      internalID: 295146918
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Trees_Alt_161
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 32
+        width: 48
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 787ade4839ef7ea489e0083a66326a24
+      internalID: -67132010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Trees_Alt_164
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 32
+        width: 32
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e84ee5d96157f784a8a7ecbba3ddcd76
+      internalID: 1292104728
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Trees_Alt_173
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 0
+        width: 43
+        height: 57
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c0bcc8e84dcb87408d8acdc98ca7aec
+      internalID: 757028024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Trees_Alt_174
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 64
+        height: 88
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cba897999ea0110468c085fc8be0eb7e
+      internalID: 311074243
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: a5851c60455728542b979dc3d192b7e6
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":16.0,"y":16.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":1,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      Archer_Run_0: 8882666270506729424
+      Archer_Run_1: 8418572898541717210
+      Archer_Run_2: 4917221495796577052
+      Archer_Run_3: 1313344751431586703
+      Trees_Alt_0: -1878421257
+      Trees_Alt_1: -1266353652
+      Trees_Alt_10: -1785098098
+      Trees_Alt_100: 1168218057
+      Trees_Alt_101: -706341092
+      Trees_Alt_102: 384647650
+      Trees_Alt_103: 1180027912
+      Trees_Alt_104: 2109917436
+      Trees_Alt_105: 629205883
+      Trees_Alt_106: -55836250
+      Trees_Alt_107: 1045313483
+      Trees_Alt_108: 1384764
+      Trees_Alt_109: -1706743899
+      Trees_Alt_11: 1357812886
+      Trees_Alt_110: 1331887516
+      Trees_Alt_111: 1891631458
+      Trees_Alt_112: 2048983760
+      Trees_Alt_113: -1499067878
+      Trees_Alt_114: -1421512674
+      Trees_Alt_115: 836022206
+      Trees_Alt_116: -436277262
+      Trees_Alt_117: -2108539969
+      Trees_Alt_118: 335428327
+      Trees_Alt_119: -1282876634
+      Trees_Alt_12: 1886365668
+      Trees_Alt_120: 605455274
+      Trees_Alt_121: 332309288
+      Trees_Alt_122: 204045265
+      Trees_Alt_123: 1630447432
+      Trees_Alt_124: -1870204343
+      Trees_Alt_125: 1105497760
+      Trees_Alt_126: 1247735834
+      Trees_Alt_127: 652959534
+      Trees_Alt_128: -1883069336
+      Trees_Alt_129: 1598723781
+      Trees_Alt_13: 851762436
+      Trees_Alt_130: 148571207
+      Trees_Alt_131: -374594253
+      Trees_Alt_132: -1319936516
+      Trees_Alt_133: -1694238821
+      Trees_Alt_134: 2120943351
+      Trees_Alt_135: -405400764
+      Trees_Alt_136: -1294258558
+      Trees_Alt_137: -1391938217
+      Trees_Alt_138: 1044035711
+      Trees_Alt_139: -536897441
+      Trees_Alt_14: -842375000
+      Trees_Alt_140: -1680995413
+      Trees_Alt_141: 1743980916
+      Trees_Alt_142: 327660612
+      Trees_Alt_143: -354739607
+      Trees_Alt_144: 1360946454
+      Trees_Alt_145: -1993670746
+      Trees_Alt_146: 2061024645
+      Trees_Alt_147: -2094847023
+      Trees_Alt_148: 1349149095
+      Trees_Alt_149: -307475035
+      Trees_Alt_15: 248414732
+      Trees_Alt_150: -1141351714
+      Trees_Alt_151: 1533922211
+      Trees_Alt_152: -961254839
+      Trees_Alt_153: 56482658
+      Trees_Alt_154: -1089529456
+      Trees_Alt_155: -1164420984
+      Trees_Alt_156: -1380774809
+      Trees_Alt_157: 794437122
+      Trees_Alt_158: 807151427
+      Trees_Alt_159: 295146918
+      Trees_Alt_16: 437385185
+      Trees_Alt_160: 377421826
+      Trees_Alt_161: -67132010
+      Trees_Alt_162: 1204366998
+      Trees_Alt_163: -700230415
+      Trees_Alt_164: 1292104728
+      Trees_Alt_165: -86966638
+      Trees_Alt_166: -701608134
+      Trees_Alt_167: -1277568807
+      Trees_Alt_168: 1994418598
+      Trees_Alt_169: 1942839841
+      Trees_Alt_17: 2062592733
+      Trees_Alt_170: 1641052913
+      Trees_Alt_171: -98774965
+      Trees_Alt_172: -1280713793
+      Trees_Alt_173: 757028024
+      Trees_Alt_174: 311074243
+      Trees_Alt_175: 1688180440
+      Trees_Alt_18: 1670119004
+      Trees_Alt_19: -1533235882
+      Trees_Alt_2: 1975697153
+      Trees_Alt_20: -71677512
+      Trees_Alt_21: 2115438190
+      Trees_Alt_22: -71115309
+      Trees_Alt_23: 1303198117
+      Trees_Alt_24: -1391134432
+      Trees_Alt_25: -58617616
+      Trees_Alt_26: -849848043
+      Trees_Alt_27: 1592976481
+      Trees_Alt_28: 746377527
+      Trees_Alt_29: 492099665
+      Trees_Alt_3: -594846174
+      Trees_Alt_30: -730518538
+      Trees_Alt_31: 1216182815
+      Trees_Alt_32: 1801657318
+      Trees_Alt_33: -59872031
+      Trees_Alt_34: -1825377592
+      Trees_Alt_35: 1915867722
+      Trees_Alt_36: 458492349
+      Trees_Alt_37: 925465670
+      Trees_Alt_38: 2034120614
+      Trees_Alt_39: 222641654
+      Trees_Alt_4: 1348698889
+      Trees_Alt_40: -413773792
+      Trees_Alt_41: -1118590694
+      Trees_Alt_42: 1199855995
+      Trees_Alt_43: -528544091
+      Trees_Alt_44: 2135699543
+      Trees_Alt_45: 2112134203
+      Trees_Alt_46: 1269301838
+      Trees_Alt_47: 1749682279
+      Trees_Alt_48: 7833069
+      Trees_Alt_49: 1536555187
+      Trees_Alt_5: -874896240
+      Trees_Alt_50: 245948372
+      Trees_Alt_51: 570128380
+      Trees_Alt_52: -1406752549
+      Trees_Alt_53: -1274663022
+      Trees_Alt_54: -1376331509
+      Trees_Alt_55: -1618511650
+      Trees_Alt_56: -17334148
+      Trees_Alt_57: -1818173771
+      Trees_Alt_58: 1566609945
+      Trees_Alt_59: -1140053418
+      Trees_Alt_6: 1111653556
+      Trees_Alt_60: 2030270729
+      Trees_Alt_61: -1745768177
+      Trees_Alt_62: -1589786175
+      Trees_Alt_63: -336645729
+      Trees_Alt_64: -2001443112
+      Trees_Alt_65: 341993465
+      Trees_Alt_66: 1922147416
+      Trees_Alt_67: 418202213
+      Trees_Alt_68: 1107364909
+      Trees_Alt_69: -157119483
+      Trees_Alt_7: -243401205
+      Trees_Alt_70: -214748758
+      Trees_Alt_71: -1744071824
+      Trees_Alt_72: 1564925307
+      Trees_Alt_73: -1494849846
+      Trees_Alt_74: -1128571347
+      Trees_Alt_75: 854558454
+      Trees_Alt_76: -693101944
+      Trees_Alt_77: 1221699289
+      Trees_Alt_78: -140866774
+      Trees_Alt_79: -1565694015
+      Trees_Alt_8: -1561462415
+      Trees_Alt_80: -2129295350
+      Trees_Alt_81: -262934337
+      Trees_Alt_82: 911534383
+      Trees_Alt_83: 1546834201
+      Trees_Alt_84: 1535759034
+      Trees_Alt_85: -1040810072
+      Trees_Alt_86: -107140260
+      Trees_Alt_87: 1430811506
+      Trees_Alt_88: 679478735
+      Trees_Alt_89: 943511107
+      Trees_Alt_9: -36543747
+      Trees_Alt_90: -30633068
+      Trees_Alt_91: -798841188
+      Trees_Alt_92: -413594099
+      Trees_Alt_93: 94206870
+      Trees_Alt_94: 892494309
+      Trees_Alt_95: 1430777634
+      Trees_Alt_96: 69017266
+      Trees_Alt_97: -1753546627
+      Trees_Alt_98: -145118160
+      Trees_Alt_99: 54366315
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
