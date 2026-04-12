@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7834118292228433177}
   - component: {fileID: 3595536454590887408}
   - component: {fileID: -3480925247954378337}
+  - component: {fileID: 1879118994331715441}
   m_Layer: 0
   m_Name: Bush
   m_TagString: Untagged
@@ -107,4 +108,20 @@ MonoBehaviour:
   m_OverrideArea: 1
   m_Area: 1
   m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
+--- !u!114 &1879118994331715441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2822864556666361234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa0352a4d56abd42ad2fc69deb72448, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: NavMeshPlus::NavMeshPlus.Components.NavMeshModifierVolume
+  m_Size: {x: 1.9874072, y: 0.96115613, z: 4}
+  m_Center: {x: 0.0087502, y: -0.019421935, z: 0}
+  m_Area: 1
   m_AffectedAgents: ffffffff
