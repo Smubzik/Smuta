@@ -1,71 +1,63 @@
 using UnityEngine;
 using UnityEngine.AI;
-using TransSibSurvivors.Utils;
+using Transib.Utils;
 
-
-public class EnemyAI : MonoBehaviour
-{
+public class enemyAI : MonoBehaviour{
     [SerializeField] private State startingState;
-    [SerializeField] private float RoamingDistanceMax = 7f;
-    [SerializeField] private float RoamingDistanceMin = 3f;
-    [SerializeField] private float RoamingTimerMax = 2f;
+    [SerializeField] private float roamingDistanceMax = 7f;
+    [SerializeField] private float roamingDistanceMin = 3f;
+    [SerializeField] private float roamingTimerMax = 2f;
 
     private NavMeshAgent navMeshAgent;
     private State state;
     private float roamingTime;
     private Vector3 roamPosition;
     private Vector3 startingPosition;
-    private enum State
-    {
-        Idle,
+
+    private enum State {
         Roaming
-
     }
 
-    private void Start()
-    {
-        startingPosition = transform.position;
-    }
-
-    private void Awake()
-    {
+    private void Awake() {
         navMeshAgent = GetComponent<NavMeshAgent>();
         navMeshAgent.updateRotation = false;
         navMeshAgent.updateUpAxis = false;
         state = startingState;
     }
 
-    private void Update()
-    {
-        switch (state)
-        {
-            default:
-            case State.Idle:
-                break;
+    private void Update() {
+        switch (state) {
+            default: 
             case State.Roaming:
                 roamingTime -= Time.deltaTime;
-                if (roamingTime <= 0f)
-                {
+                if (roamingTime < 0) {
                     Roaming();
-                    roamingTime = RoamingTimerMax;
+                    roamingTime = roamingTimerMax;
                 }
-
                 break;
         }
     }
 
-    private void Roaming()
-    {
+    private void Roaming() {
+        startingPosition = transform.position;
         roamPosition = GetRoamingPosition();
+        ChangeFacingDirection(startingPosition, roamPosition);
         navMeshAgent.SetDestination(roamPosition);
-
     }
 
-    private Vector3 GetRoamingPosition()
+    private Vector3 GetRoamingPosition() {
+        return startingPosition + Utils.GetRandomDir() * UnityEngine.Random.Range(roamingDistanceMin, roamingDistanceMax);
+    }
+
+    private void ChangeFacingDirection(Vector3 sourcePosition, Vector3 targetPosition)
     {
-        return startingPosition + Utils.GetRandomDir() * UnityEngine.Random.Range(RoamingDistanceMin, RoamingDistanceMax);
+        if (sourcePosition.x > targetPosition.x)
+        {
+            transform.rotation = Quaternion.Euler(0, -180, 0);
+        } else {
+            transform.rotation = Quaternion.Euler(0, 0, 0);
+        }
     }
 
-}
+};
 
-    

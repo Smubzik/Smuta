@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8326303323136569258}
   - component: {fileID: 1629315651608222307}
   - component: {fileID: 974273504595951951}
+  - component: {fileID: 3802954821292148837}
   m_Layer: 0
   m_Name: Nigga
   m_TagString: Untagged
@@ -47,7 +48,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 30
+  m_Mass: 0.0001
   m_LinearDamping: 3
   m_AngularDamping: 0.05
   m_GravityScale: 0
@@ -121,6 +122,22 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &3802954821292148837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1235381683842345058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb289532ee3fd0048987a03d739702a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::enemyAI
+  startingState: 0
+  roamingDistanceMax: 7
+  roamingDistanceMin: 3
+  roamingTimerMax: 2
 --- !u!1 &8487381425083319708
 GameObject:
   m_ObjectHideFlags: 0

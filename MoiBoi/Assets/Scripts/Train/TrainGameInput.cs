@@ -1,23 +1,23 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class GameInput : MonoBehaviour
+public class TrainGameInput : MonoBehaviour
 {
-    public static GameInput Instance { get; private set; }
+    public static TrainGameInput Instance { get; private set; }
 
-    private PlayerInputActions playerInputActions;
+    private TrainInputActions trainInputActions;
 
     private void Awake()
     {
         Instance = this;
 
-        playerInputActions = new PlayerInputActions();
-        playerInputActions.Enable();
+        trainInputActions = new TrainInputActions();
+        trainInputActions.Enable();
     }
 
     public Vector2 GetMovementVector()
     {
-        Vector2 inputVector = playerInputActions.Player.Movement.ReadValue<Vector2>();
+        Vector2 inputVector = trainInputActions.Train.Movement.ReadValue<Vector2>();
         return inputVector;
     }
 

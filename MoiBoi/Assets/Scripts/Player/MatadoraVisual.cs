@@ -31,6 +31,6 @@ public class MatadoraVisual : MonoBehaviour
             spriteRenderer.flipX = false;
         }  
     }
-
+    
 
 }

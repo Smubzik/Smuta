@@ -2,10 +2,10 @@ using System;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Matadora : MonoBehaviour
+public class Train : MonoBehaviour
 {
 
-    public static Matadora Instance { get; private set; }
+    public static Train Instance { get; private set; }
     [SerializeField] private float movingSpeed = 10f;
     Vector2 inputVector;
 
@@ -22,19 +22,9 @@ public class Matadora : MonoBehaviour
 
     }
 
-    private void Start()
-    {
-        GameInput.Instance.OnPlayerAttack += GameInput_OnPlayerAttack;
-    }
-
-    private void GameInput_OnPlayerAttack(object sender, EventArgs e)
-    {
-        ActiveWeapon.Instance.getActiveWeapon().Attack();
-    }
-
     private void Update()
     {
-        inputVector = GameInput.Instance.GetMovementVector();
+        inputVector = TrainGameInput.Instance.GetMovementVector();
     }
 
     private void FixedUpdate()
