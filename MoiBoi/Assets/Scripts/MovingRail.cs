@@ -1,0 +1,21 @@
+using UnityEngine;
+
+public class MovingRail : MonoBehaviour
+{
+    
+    public float speed = 2f;       
+    public float topBound = 10f;    
+    public float bottomBound = -10f; 
+
+    void Update()
+    {
+        transform.Translate(Vector2.left * speed * Time.deltaTime);
+
+        if (transform.position.y < bottomBound)
+        {
+            Vector3 newPos = transform.position;
+            newPos.y = topBound;
+            transform.position = newPos;
+        }
+    }
+}

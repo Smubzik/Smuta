@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 4124206706055660341}
   - component: {fileID: 6477875545755735955}
   - component: {fileID: 797410638627778684}
-  - component: {fileID: 8190288816794124339}
   - component: {fileID: 2010408375412206199}
-  m_Layer: 0
+  - component: {fileID: 4592370935638481092}
+  m_Layer: 9
   m_Name: Tree
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -131,22 +131,6 @@ CapsuleCollider2D:
   m_Offset: {x: 0.06382465, y: -0.11344421}
   m_Size: {x: 0.78190756, y: 0.9585974}
   m_Direction: 0
---- !u!114 &8190288816794124339
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3081488141526086815}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7fa0352a4d56abd42ad2fc69deb72448, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: NavMeshPlus::NavMeshPlus.Components.NavMeshModifierVolume
-  m_Size: {x: 0.7861686, y: 0.91743636, z: 4}
-  m_Center: {x: 0.1156981, y: -0.04128182, z: 0}
-  m_Area: 1
-  m_AffectedAgents: ffffffff
 --- !u!114 &2010408375412206199
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -161,5 +145,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: NavMeshPlus::NavMeshPlus.Components.NavMeshModifierVolume
   m_Size: {x: 0.65698886, y: 0.82580876, z: 4}
   m_Center: {x: 0.09328258, y: -0.061582565, z: 0}
-  m_Area: 1
+  m_Area: 0
   m_AffectedAgents: ffffffff
+--- !u!114 &4592370935638481092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3081488141526086815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5f912e4f89355541ad69078f4b7484a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MovingObjects
+  speed: 5
+  topBound: 10
+  bottomBound: -13

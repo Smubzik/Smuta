@@ -1,10 +1,7 @@
 fileFormatVersion: 2
-guid: 63e3003bfbe00734e99c979e8532365e
+guid: 7a109e885a4a8ad42ab36194a1656f27
 TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: 7482667652216324306
-    second: Square
+  internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -51,12 +48,12 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 256
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
-  spriteTessellationDetail: 0
+  spriteTessellationDetail: -1
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
@@ -68,14 +65,14 @@ TextureImporter:
   ignorePngGamma: 0
   applyGammaDecoding: 0
   swizzle: 50462976
-  cookieLightType: 1
+  cookieLightType: 0
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -96,66 +93,36 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: iOS
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Square
+      name: Train0HP
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 256
-        height: 256
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 1644
+        y: 221
+        width: 330
+        height: 121
+      alignment: 9
+      pivot: {x: 0.50934505, y: 0.4405336}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2d009a6b596c7d760800000000000000
-      internalID: 7482667652216324306
+      spriteID: f6c38a74343a321409cd509308c335ca
+      internalID: -1275450320
       vertices: []
       indices: 
       edges: []
       weights: []
     outline: []
     customData: 
-    physicsShape:
-    - - {x: -128, y: 128}
-      - {x: -128, y: -128}
-      - {x: 128, y: -128}
-      - {x: 128, y: 128}
+    physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 2da57227646b9ce4aba2c714d947bac0
     internalID: 0
     vertices: []
     indices: 
@@ -163,9 +130,32 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":6.0,"y":4.0},"gridSpriteSize":{"x":382.0,"y":116.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      Square: 7482667652216324306
+      Gemini_Generated_Image_piqrqrpiqrqrpiqr-remove-bg-io_0: 2107772161
+      Gemini_Generated_Image_piqrqrpiqrqrpiqr-remove-bg-io_1: -1942638637
+      Gemini_Generated_Image_piqrqrpiqrqrpiqr-remove-bg-io_11: -828497991
+      Gemini_Generated_Image_piqrqrpiqrqrpiqr-remove-bg-io_12: 1449491470
+      Gemini_Generated_Image_piqrqrpiqrqrpiqr-remove-bg-io_13: -200855632
+      Gemini_Generated_Image_piqrqrpiqrqrpiqr-remove-bg-io_14: -1712696206
+      Gemini_Generated_Image_piqrqrpiqrqrpiqr-remove-bg-io_15: 1802733807
+      Gemini_Generated_Image_piqrqrpiqrqrpiqr-remove-bg-io_16: 249626881
+      Gemini_Generated_Image_piqrqrpiqrqrpiqr-remove-bg-io_17: 1500990941
+      Gemini_Generated_Image_piqrqrpiqrqrpiqr-remove-bg-io_18: -1400898536
+      Gemini_Generated_Image_piqrqrpiqrqrpiqr-remove-bg-io_19: -1899335252
+      Gemini_Generated_Image_piqrqrpiqrqrpiqr-remove-bg-io_2: -903878083
+      Gemini_Generated_Image_piqrqrpiqrqrpiqr-remove-bg-io_20: 463049731
+      Gemini_Generated_Image_piqrqrpiqrqrpiqr-remove-bg-io_21: 1524662704
+      Gemini_Generated_Image_piqrqrpiqrqrpiqr-remove-bg-io_3: -1279168978
+      Gemini_Generated_Image_piqrqrpiqrqrpiqr-remove-bg-io_4: -1730923451
+      Gemini_Generated_Image_piqrqrpiqrqrpiqr-remove-bg-io_5: 286013467
+      Gemini_Generated_Image_piqrqrpiqrqrpiqr-remove-bg-io_6: 861303407
+      Gemini_Generated_Image_piqrqrpiqrqrpiqr-remove-bg-io_7: -1457704129
+      Gemini_Generated_Image_piqrqrpiqrqrpiqr-remove-bg-io_8: -318550225
+      Gemini_Generated_Image_piqrqrpiqrqrpiqr-remove-bg-io_9: 1464588122
+      Train0HP: -1275450320
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

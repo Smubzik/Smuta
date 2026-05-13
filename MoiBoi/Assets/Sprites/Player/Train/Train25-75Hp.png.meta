@@ -1,0 +1,187 @@
+fileFormatVersion: 2
+guid: 9b04bff82f3285b4db917bfa04e20038
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 20
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Train50-75HP
+      rect:
+        serializedVersion: 2
+        x: 789
+        y: 348
+        width: 374
+        height: 116
+      alignment: 9
+      pivot: {x: 0.5131684, y: 0.43631482}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2b3b2d25e9a0a444a5299dc853b64c4
+      internalID: 2136026859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Train25-49HP
+      rect:
+        serializedVersion: 2
+        x: 407
+        y: 232
+        width: 382
+        height: 116
+      alignment: 9
+      pivot: {x: 0.49677697, y: 0.4469289}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf167edda98a9ca4cbb4a29623fb4b23
+      internalID: -492102389
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: f1f9014fd84a4ba46bb5c867e49b1667
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":6.0,"y":4.0},"gridSpriteSize":{"x":382.0,"y":116.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      Gemini_Generated_Image_scy6chscy6chscy6-remove-bg-io_0: -1306894074
+      Gemini_Generated_Image_scy6chscy6chscy6-remove-bg-io_1: -464389940
+      Gemini_Generated_Image_scy6chscy6chscy6-remove-bg-io_10: -822691016
+      Gemini_Generated_Image_scy6chscy6chscy6-remove-bg-io_11: -1306142282
+      Gemini_Generated_Image_scy6chscy6chscy6-remove-bg-io_12: -1105939787
+      Gemini_Generated_Image_scy6chscy6chscy6-remove-bg-io_13: 1161458706
+      Gemini_Generated_Image_scy6chscy6chscy6-remove-bg-io_14: -1027219957
+      Gemini_Generated_Image_scy6chscy6chscy6-remove-bg-io_15: -465992806
+      Gemini_Generated_Image_scy6chscy6chscy6-remove-bg-io_16: 1213731893
+      Gemini_Generated_Image_scy6chscy6chscy6-remove-bg-io_17: -1032853376
+      Gemini_Generated_Image_scy6chscy6chscy6-remove-bg-io_18: 390506469
+      Gemini_Generated_Image_scy6chscy6chscy6-remove-bg-io_19: 861809389
+      Gemini_Generated_Image_scy6chscy6chscy6-remove-bg-io_20: -1201601745
+      Gemini_Generated_Image_scy6chscy6chscy6-remove-bg-io_21: -1024164314
+      Gemini_Generated_Image_scy6chscy6chscy6-remove-bg-io_22: 750465065
+      Gemini_Generated_Image_scy6chscy6chscy6-remove-bg-io_23: 1904040966
+      Gemini_Generated_Image_scy6chscy6chscy6-remove-bg-io_3: -1042204767
+      Gemini_Generated_Image_scy6chscy6chscy6-remove-bg-io_4: -1486117307
+      Gemini_Generated_Image_scy6chscy6chscy6-remove-bg-io_5: -824108636
+      Gemini_Generated_Image_scy6chscy6chscy6-remove-bg-io_6: -1813196301
+      Gemini_Generated_Image_scy6chscy6chscy6-remove-bg-io_8: 697727437
+      Gemini_Generated_Image_scy6chscy6chscy6-remove-bg-io_9: 1018643137
+      Train25-49HP: -492102389
+      Train50-75HP: 2136026859
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

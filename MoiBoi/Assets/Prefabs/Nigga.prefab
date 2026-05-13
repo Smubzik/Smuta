@@ -10,9 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 2344609206947436874}
   - component: {fileID: 8326303323136569258}
-  - component: {fileID: 1629315651608222307}
   - component: {fileID: 974273504595951951}
   - component: {fileID: 3802954821292148837}
+  - component: {fileID: 841242329145002938}
+  - component: {fileID: 4640638821822667268}
+  - component: {fileID: 5037010170899750304}
   m_Layer: 0
   m_Name: Nigga
   m_TagString: Untagged
@@ -63,8 +65,52 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!70 &1629315651608222307
-CapsuleCollider2D:
+--- !u!195 &974273504595951951
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1235381683842345058}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.82
+  m_Speed: 1.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 0.14
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &3802954821292148837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1235381683842345058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb289532ee3fd0048987a03d739702a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::enemyAI
+  _startingState: 0
+  _roamingDistanceMax: 7
+  _roamingDistanceMin: 3
+  _roamingTimerMax: 5
+  _isChasingEnemy: 1
+  _isAttackingEnemy: 1
+  _chasingDistance: 100
+  _chasingSpeedMultiplier: 2
+  _attackingDistance: 2
+  _attackRate: 1
+--- !u!61 &841242329145002938
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -93,36 +139,23 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.063729875, y: -0.12527683}
-  m_Size: {x: 1.9288645, y: 1.9288645}
-  m_Direction: 1
---- !u!195 &974273504595951951
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1235381683842345058}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.82
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 0.14
-  m_BaseOffset: 0
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
---- !u!114 &3802954821292148837
+  m_Offset: {x: -0.025475025, y: 0.64959157}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1.1528444, y: 1.6368542}
+  m_EdgeRadius: 0
+--- !u!114 &4640638821822667268
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -131,13 +164,62 @@ MonoBehaviour:
   m_GameObject: {fileID: 1235381683842345058}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb289532ee3fd0048987a03d739702a1, type: 3}
+  m_Script: {fileID: 11500000, guid: 74d12064dc40b1c4ea46e78594298046, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::enemyAI
-  startingState: 0
-  roamingDistanceMax: 7
-  roamingDistanceMin: 3
-  roamingTimerMax: 2
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyEntity
+  _maxHealth: 20
+--- !u!60 &5037010170899750304
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1235381683842345058}
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 1.2175175, y: 0.9501601}
+      - {x: 0.56550044, y: 0.72197616}
+      - {x: 0.51581264, y: 0.30170053}
+      - {x: 1.0648243, y: -0.018698633}
+      - {x: 1.3284158, y: 0.37309697}
+  m_UseDelaunayMesh: 1
 --- !u!1 &8487381425083319708
 GameObject:
   m_ObjectHideFlags: 0
@@ -149,6 +231,8 @@ GameObject:
   - component: {fileID: 6219919548901546955}
   - component: {fileID: 4025739223855191292}
   - component: {fileID: 7823381200274991268}
+  - component: {fileID: 6556616963674365341}
+  - component: {fileID: 291635295576116756}
   m_Layer: 0
   m_Name: NiggaVisual
   m_TagString: Untagged
@@ -252,3 +336,74 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &6556616963674365341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8487381425083319708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 787aa627ab5ec56468419c4bf9da72d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyVisual
+  _enemyAI: {fileID: 3802954821292148837}
+  _enemyEntity: {fileID: 4640638821822667268}
+--- !u!60 &291635295576116756
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8487381425083319708}
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.3}
+    oldSize: {x: 4, y: 4}
+    newSize: {x: 4, y: 4}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.5625, y: 1.2375002}
+      - {x: 0, y: 1.4875002}
+      - {x: -0.375, y: 1.3625002}
+      - {x: -0.8125, y: 1.1750002}
+      - {x: -0.8125, y: -0.07499981}
+      - {x: -0.3125, y: -0.19999981}
+      - {x: 0.1875, y: -0.19999981}
+      - {x: 0.75, y: 0.17500019}
+      - {x: 0.875, y: 0.3625002}
+      - {x: 0.875, y: 0.7375002}
+  m_UseDelaunayMesh: 1

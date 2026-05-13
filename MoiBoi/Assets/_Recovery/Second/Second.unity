@@ -2768,6 +2768,7 @@ GameObject:
   - component: {fileID: 2071031764}
   - component: {fileID: 2071031763}
   - component: {fileID: 2071031767}
+  - component: {fileID: 2071031768}
   m_Layer: 0
   m_Name: Matadora
   m_TagString: Untagged
@@ -2869,6 +2870,52 @@ CapsuleCollider2D:
   m_Offset: {x: 0.07861828, y: -0.1496109}
   m_Size: {x: 2.233957, y: 1.0172484}
   m_Direction: 1
+--- !u!61 &2071031768
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2071031762}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0.088899136, y: 2.4891758}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 2.386826, y: 5.409396}
+  m_EdgeRadius: 0
 --- !u!1001 &2083929342
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3055,9 +3102,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2444812076895868459, guid: 960faf8577119fc4fb66a40aa55e029c, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2444812076895868459, guid: 960faf8577119fc4fb66a40aa55e029c, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2444812076895868459, guid: 960faf8577119fc4fb66a40aa55e029c, type: 3}
+      propertyPath: m_UsedByEffector
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7292961667116165299, guid: 960faf8577119fc4fb66a40aa55e029c, type: 3}
       propertyPath: m_Name
       value: Sword
+      objectReference: {fileID: 0}
+    - target: {fileID: 7565819139682658224, guid: 960faf8577119fc4fb66a40aa55e029c, type: 3}
+      propertyPath: _damageAmount
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3072,45 +3135,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 617567264}
     m_Modifications:
-    - target: {fileID: 974273504595951951, guid: 4b53b3a2dc3f24c44bcd6ad9caea3b20, type: 3}
-      propertyPath: m_Speed
-      value: 1.5
-      objectReference: {fileID: 0}
     - target: {fileID: 1235381683842345058, guid: 4b53b3a2dc3f24c44bcd6ad9caea3b20, type: 3}
       propertyPath: m_Name
       value: Nigga
       objectReference: {fileID: 0}
-    - target: {fileID: 1629315651608222307, guid: 4b53b3a2dc3f24c44bcd6ad9caea3b20, type: 3}
-      propertyPath: m_Size.x
-      value: 1.953226
-      objectReference: {fileID: 0}
-    - target: {fileID: 1629315651608222307, guid: 4b53b3a2dc3f24c44bcd6ad9caea3b20, type: 3}
-      propertyPath: m_Size.y
-      value: 1.953226
-      objectReference: {fileID: 0}
-    - target: {fileID: 1629315651608222307, guid: 4b53b3a2dc3f24c44bcd6ad9caea3b20, type: 3}
-      propertyPath: m_Offset.x
-      value: 0.02776166
-      objectReference: {fileID: 0}
-    - target: {fileID: 1629315651608222307, guid: 4b53b3a2dc3f24c44bcd6ad9caea3b20, type: 3}
-      propertyPath: m_Offset.y
-      value: -0.09058805
-      objectReference: {fileID: 0}
-    - target: {fileID: 1705293031312709577, guid: 4b53b3a2dc3f24c44bcd6ad9caea3b20, type: 3}
-      propertyPath: m_Height
-      value: 0.16
-      objectReference: {fileID: 0}
-    - target: {fileID: 1705293031312709577, guid: 4b53b3a2dc3f24c44bcd6ad9caea3b20, type: 3}
-      propertyPath: m_Radius
-      value: 0.42
-      objectReference: {fileID: 0}
     - target: {fileID: 2344609206947436874, guid: 4b53b3a2dc3f24c44bcd6ad9caea3b20, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.1
+      value: -4.34
       objectReference: {fileID: 0}
     - target: {fileID: 2344609206947436874, guid: 4b53b3a2dc3f24c44bcd6ad9caea3b20, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.25
+      value: -1.9
       objectReference: {fileID: 0}
     - target: {fileID: 2344609206947436874, guid: 4b53b3a2dc3f24c44bcd6ad9caea3b20, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3144,17 +3179,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6219919548901546955, guid: 4b53b3a2dc3f24c44bcd6ad9caea3b20, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6219919548901546955, guid: 4b53b3a2dc3f24c44bcd6ad9caea3b20, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 1705293031312709577, guid: 4b53b3a2dc3f24c44bcd6ad9caea3b20, type: 3}
-    - {fileID: 8631867423461228393, guid: 4b53b3a2dc3f24c44bcd6ad9caea3b20, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

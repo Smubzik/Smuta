@@ -97,7 +97,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Frait train assets_0
+      name: TrainFullHP
       rect:
         serializedVersion: 2
         x: 0
@@ -255,11 +255,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 11
-        y: 78
+        y: 67
         width: 2096
         height: 643
       alignment: 9
-      pivot: {x: 0.020921933, y: 0.50000036}
+      pivot: {x: 0.020921933, y: 0.5000005}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -332,7 +332,6 @@ TextureImporter:
       - key: SpriteEditor.SliceSettings
         value: '{"sliceOnImport":false,"gridCellCount":{"x":3.0,"y":9.0},"gridSpriteSize":{"x":2000.0,"y":555.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":9,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      Frait train assets_0: 1750994345
       Frait train assets_1: 294819802
       Frait train assets_10: -964295244
       Frait train assets_11: -869856962
@@ -354,6 +353,7 @@ TextureImporter:
       Frait train assets_7: -245054784
       Frait train assets_8: 1762148897
       Frait train assets_9: -956129471
+      TrainFullHP: 1750994345
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

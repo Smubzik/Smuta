@@ -2,6 +2,8 @@ using System;
 using Unity.VisualScripting;
 using UnityEngine;
 
+[SelectionBase]
+
 public class Matadora : MonoBehaviour
 {
 
