@@ -114,6 +114,7 @@ public class Train : MonoBehaviour
         }
     }
 
+    
     public bool isMoving()
     {
         return IsMoving;

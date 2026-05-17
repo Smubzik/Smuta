@@ -17,6 +17,7 @@ public class Turret : MonoBehaviour
     }
     private void Update()
     {
+        if (Time.timeScale == 0f) return;
         Vector3 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         float rotateZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0f, 0f, rotateZ + _offset);

@@ -12,11 +12,22 @@ public class Bullet : MonoBehaviour
         RaycastHit2D other = Physics2D.Raycast(transform.position, transform.up, _distance, _layerMask);
         if (other.collider != null)
         {
-            if (other.collider.CompareTag("Enemy"))
+            if (other.collider.TryGetComponent(out EnemyEntityBase enemy))
             {
-                other.collider.GetComponent<EnemyEntity>().TakeDamage(transform, _damage);
+                
+                other.collider.GetComponent<EnemyEntityBase>().TakeDamage(transform, _damage);
+                
                 Destroy(gameObject);
             }
+
+            if (other.collider.TryGetComponent(out EnemyRangedEntity RangedEnemy))
+            {
+
+                other.collider.GetComponent<EnemyRangedEntity>().TakeDamage(transform, _damage);
+
+                Destroy(gameObject);
+            }
+
             else
             {
                 Destroy(gameObject);
