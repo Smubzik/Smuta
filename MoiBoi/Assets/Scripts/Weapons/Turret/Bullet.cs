@@ -2,38 +2,50 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public float _speed;
-    public float _distance;
-    public int _damage;
-    public LayerMask _layerMask;
-
+    public float damage = 3f;
+    public float speed = 20f;
+    public float maxDistance = 0.5f;
+    public LayerMask enemyLayer;
+    
+    private Rigidbody2D rb;
+    private bool _hasHit = false;  // ← Флаг защиты от двойного урона
+    
+    void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        rb.linearVelocity = transform.right * speed;
+        Destroy(gameObject, 2f);
+    }
+    
     private void Update()
     {
-        RaycastHit2D other = Physics2D.Raycast(transform.position, transform.up, _distance, _layerMask);
-        if (other.collider != null)
+        if (_hasHit) return;  // ← Если уже попали, выходим
+        
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.right, maxDistance, enemyLayer);
+        if (hit.collider != null)
         {
-            if (other.collider.TryGetComponent(out EnemyEntityBase enemy))
+            _hasHit = true;  // ← Помечаем, что уже попали
+            
+            // Попытка получить компонент EnemyEntityBase (родительский)
+            EnemyEntityBase enemy = hit.collider.GetComponent<EnemyEntityBase>();
+            if (enemy != null)
             {
-                
-                other.collider.GetComponent<EnemyEntityBase>().TakeDamage(transform, _damage);
-                
+                enemy.TakeDamage(transform, (int)damage);
                 Destroy(gameObject);
+                return;
             }
-
-            if (other.collider.TryGetComponent(out EnemyRangedEntity RangedEnemy))
-            {
-
-                other.collider.GetComponent<EnemyRangedEntity>().TakeDamage(transform, _damage);
-
-                Destroy(gameObject);
-            }
-
-            else
-            {
-                Destroy(gameObject);
-            }
+            
+            // Если не нашли — уничтожаем пулю
+            Destroy(gameObject);
         }
-        transform.Translate(Vector2.up * _speed *  Time.deltaTime);
+    }
+    
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (!_hasHit)
+        {
+            _hasHit = true;
+            Destroy(gameObject);
+        }
     }
 }
-

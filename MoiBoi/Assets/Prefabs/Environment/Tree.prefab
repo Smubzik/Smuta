@@ -160,5 +160,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MovingObjects
   speed: 5
-  topBound: 10
-  bottomBound: -13
+  topBound: 21
+  bottomBound: -30

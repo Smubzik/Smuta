@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: ProjectEnemy
   m_EditorClassIdentifier: Assembly-CSharp::EnemySO
   enemyName: Golem
-  enemyHealth: 20
+  enemyHealth: 30
   enemyDamageAmount: 3

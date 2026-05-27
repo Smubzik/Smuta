@@ -4,8 +4,8 @@ public class MovingObjects : MonoBehaviour
 {
 
     public float speed = 2f;       
-    public float topBound = 10f;    
-    public float bottomBound = -10f; 
+    public float topBound = 140f;    
+    public float bottomBound = -140f; 
 
     void Update()
     {

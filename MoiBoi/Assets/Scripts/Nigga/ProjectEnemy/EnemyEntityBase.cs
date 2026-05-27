@@ -8,7 +8,6 @@ public abstract class EnemyEntityBase : MonoBehaviour
     protected PolygonCollider2D _polygonCollider2D;
     protected BoxCollider2D _boxCollider2D;
     protected Knockback _knockback;
-
     public event EventHandler OnTakingHit;
     public event EventHandler Death;
 
@@ -24,14 +23,6 @@ public abstract class EnemyEntityBase : MonoBehaviour
         _currentHealth = _enemySO.enemyHealth;
     }
 
-    public virtual void TakeDamage(Transform damageSource, int damage)
-    {
-        _currentHealth -= damage;
-        _knockback?.GetKnockedBack(damageSource);
-        OnTakingHit?.Invoke(this, EventArgs.Empty);
-        DetectDeath();
-    }
-
     protected virtual void DetectDeath()
     {
         if (_currentHealth <= 0)
@@ -41,6 +32,19 @@ public abstract class EnemyEntityBase : MonoBehaviour
             OnDeath();
             Death?.Invoke(this, EventArgs.Empty);
         }
+    }
+    public void SetHealth(int health)
+    {
+        _currentHealth = health;
+    }
+
+    public virtual void TakeDamage(Transform damageSource, int damage)
+    {
+        Debug.Log($"До урона: {_currentHealth}, получаем урон: {damage}");
+        _currentHealth -= damage;
+        _knockback?.GetKnockedBack(damageSource);
+        OnTakingHit?.Invoke(this, EventArgs.Empty);
+        DetectDeath();
     }
 
     protected abstract void OnDeath();

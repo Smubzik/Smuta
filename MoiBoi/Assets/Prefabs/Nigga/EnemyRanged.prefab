@@ -172,10 +172,10 @@ GameObject:
   - component: {fileID: 5573311442339099147}
   - component: {fileID: 8893369545600904967}
   - component: {fileID: 256245815023716838}
-  - component: {fileID: 3180843880992840636}
   - component: {fileID: 6702218217759607242}
   - component: {fileID: 404858962258584160}
   - component: {fileID: 15658708687618198}
+  - component: {fileID: 583470344691717090}
   m_Layer: 7
   m_Name: EnemyRanged
   m_TagString: Enemy
@@ -193,7 +193,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 309.84064, y: 519.83813, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.55, y: 1.55, z: 1.55}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4934612140050647217}
@@ -208,7 +208,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7017763053053787615}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -295,7 +295,56 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.1528444, y: 1.6368542}
   m_EdgeRadius: 0
---- !u!60 &3180843880992840636
+--- !u!114 &6702218217759607242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7017763053053787615}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22f017b7424b581428d84b1083019e96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyRangedAI
+  _chasingSpeed: 3
+  _isAttackingEnemy: 1
+  _attackRange: 6
+  _attackRate: 1.5
+  _stopDistance: 4
+  _projectilePrefab: {fileID: 1630820213853087224, guid: 3122a5103e50c8d4f8f16abb6361e53d, type: 3}
+  _firePoint: {fileID: 4426636339208000802}
+  _projectileSpeed: 10
+  _projectileDamage: 2
+--- !u!114 &404858962258584160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7017763053053787615}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aea9cc79aaba0704f8f8b581f0d026a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyRangedEntity
+  _enemySO: {fileID: 11400000, guid: 9dc670be765fb41cb8918dc4b3b2483c, type: 2}
+  coinReward: 20
+--- !u!114 &15658708687618198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7017763053053787615}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4687f11a1a785a4e91d1ac5c660bf39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Knockback
+  _knockbackForce: 3
+  _knockbackTimerMax: 0.3
+--- !u!60 &583470344691717090
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -325,7 +374,7 @@ PolygonCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -341,58 +390,9 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.6528778, y: 0.7591324}
-      - {x: 0.7920639, y: 0.46748245}
-      - {x: 0.62923056, y: 0.23051661}
-      - {x: 1.1542106, y: 0.26487535}
-      - {x: 1.266018, y: 0.7629612}
-      - {x: 0.98274994, y: 0.9618951}
+    - - {x: 0, y: 1}
+      - {x: -0.95105654, y: 0.30901697}
+      - {x: -0.5877852, y: -0.80901706}
+      - {x: 0.58778536, y: -0.80901694}
+      - {x: 0.9510565, y: 0.30901712}
   m_UseDelaunayMesh: 1
---- !u!114 &6702218217759607242
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7017763053053787615}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22f017b7424b581428d84b1083019e96, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyRangedAI
-  _chasingSpeed: 3
-  _isAttackingEnemy: 1
-  _attackRange: 6
-  _attackRate: 1.5
-  _stopDistance: 4
-  _projectilePrefab: {fileID: 1630820213853087224, guid: 3122a5103e50c8d4f8f16abb6361e53d, type: 3}
-  _firePoint: {fileID: 4426636339208000802}
-  _projectileSpeed: 10
-  _projectileDamage: 10
---- !u!114 &404858962258584160
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7017763053053787615}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aea9cc79aaba0704f8f8b581f0d026a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyRangedEntity
-  _enemySO: {fileID: 11400000, guid: 4399d2954a5b8b24fafa380ed91017f1, type: 2}
---- !u!114 &15658708687618198
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7017763053053787615}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4687f11a1a785a4e91d1ac5c660bf39, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Knockback
-  _knockbackForce: 3
-  _knockbackTimerMax: 0.3

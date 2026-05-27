@@ -7,6 +7,9 @@ public class EnemyBullet : MonoBehaviour
     private Vector2 _direction;
     private bool _isInitialized;
 
+    [Header("Collision Settings")]
+    [SerializeField] private LayerMask _obstacleLayers; // ← какие слои считаются препятствиями
+
     public void Initialize(Vector2 direction, float speed, int damage)
     {
         _direction = direction.normalized;
@@ -33,7 +36,7 @@ public class EnemyBullet : MonoBehaviour
             player.TakeDamage(_damage);
             Destroy(gameObject);
         }
-        else if (other.CompareTag("Wall") || other.CompareTag("Obstacle"))
+        else
         {
             Destroy(gameObject);
         }

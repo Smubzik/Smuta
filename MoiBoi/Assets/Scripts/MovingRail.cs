@@ -4,8 +4,8 @@ public class MovingRail : MonoBehaviour
 {
     
     public float speed = 2f;       
-    public float topBound = 10f;    
-    public float bottomBound = -10f; 
+    public float topBound = 80f;    
+    public float bottomBound = -80f; 
 
     void Update()
     {

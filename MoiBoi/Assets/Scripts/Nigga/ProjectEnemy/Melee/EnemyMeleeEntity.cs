@@ -3,6 +3,9 @@ using UnityEngine;
 public class EnemyMeleeEntity : EnemyEntityBase
 {
     private EnemyMeleeAI _enemyAI;
+    
+    [Header("Reward")]
+    public int coinReward = 50;  // ← сколько монет даёт враг
 
     protected override void Awake()
     {
@@ -20,6 +23,14 @@ public class EnemyMeleeEntity : EnemyEntityBase
 
     protected override void OnDeath()
     {
+        // Добавляем монеты перед смертью
+        UpgradeManager upgradeManager = FindFirstObjectByType<UpgradeManager>();
+        if (upgradeManager != null)
+        {
+            upgradeManager.AddCurrency(coinReward);
+            Debug.Log($"+{coinReward} монет с врага!");
+        }
+        
         _enemyAI.SetDeathState();
     }
 }

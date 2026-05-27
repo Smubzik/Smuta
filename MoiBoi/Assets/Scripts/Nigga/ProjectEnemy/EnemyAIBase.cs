@@ -20,6 +20,8 @@ public abstract class EnemyAIBase : MonoBehaviour
     protected Collider2D _playerCollider;
     protected float _nextAttackTime;
 
+    public event EventHandler OnAttack;
+
     protected enum State
     {
         Chasing,    // Преследует поезд
@@ -27,7 +29,6 @@ public abstract class EnemyAIBase : MonoBehaviour
         Death       // Мёртв
     }
 
-    public event EventHandler OnAttack;
 
     protected virtual void Awake()
     {
@@ -36,6 +37,11 @@ public abstract class EnemyAIBase : MonoBehaviour
         _navMeshAgent.updateUpAxis = false;
         _navMeshAgent.speed = _chasingSpeed;
         _currentState = State.Chasing;  // Всегда начинаем с преследования
+    }
+
+    protected void InvokeOnAttack()
+    {
+        OnAttack?.Invoke(this, EventArgs.Empty);
     }
 
     protected virtual void Start()

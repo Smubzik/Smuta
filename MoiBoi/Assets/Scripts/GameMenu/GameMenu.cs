@@ -7,7 +7,8 @@ public class MainMenu : MonoBehaviour
     }
 
     public void ExitGame() {
-        Debug.Log("Игра закрыта");
+            Debug.Log("Игра закрыта");
+            UnityEditor.EditorApplication.isPlaying = false;
         Application.Quit();
     }
 }
