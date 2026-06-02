@@ -17,6 +17,13 @@ public class EnemyLaserEntity : EnemyEntityBase
 
     protected override void OnDeath()
     {
-        _enemyAI.SetDeathState();  // Говорим AI: я умер
+        UpgradeManager upgradeManager = FindObjectOfType<UpgradeManager>();
+        if (upgradeManager != null)
+        {
+            upgradeManager.AddCurrency(coinReward);
+            Debug.Log($"+{coinReward} монет с врага!");
+        }
+
+        _enemyAI.SetDeathState();
     }
 }
