@@ -44,10 +44,6 @@ public class DeathScreen : MonoBehaviour
             deathScreenPanel.SetActive(true);
             isDeathScreenActive = true;
             
-            if (deathText != null)
-            {
-                deathText.text = "ПОЕЗД УНИЧТОЖЕН\n\nВы проиграли!";
-            }
             
             Time.timeScale = 0f;
         }

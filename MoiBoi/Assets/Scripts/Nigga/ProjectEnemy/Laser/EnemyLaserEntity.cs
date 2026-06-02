@@ -3,6 +3,8 @@ using UnityEngine;
 public class EnemyLaserEntity : EnemyEntityBase
 {
     private EnemyLaserAI _enemyAI;
+    [Header("Reward")]
+    public int coinReward = 50;
 
     protected override void Awake()
     {

@@ -34,8 +34,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.5059357, y: -1.6868601, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.46, y: 1.46, z: 1.46}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 6571501298211064911}
   - {fileID: 4962825246764516970}
@@ -201,7 +201,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72ee3943e56ba874cbacd73aa1f4f43b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyLaserEntity
-  _enemySO: {fileID: 11400000, guid: 4399d2954a5b8b24fafa380ed91017f1, type: 2}
+  _enemySO: {fileID: 11400000, guid: 4d727fb93e8bf244780388894d9fe35f, type: 2}
+  coinReward: 20
 --- !u!114 &2694673726823361560
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -234,7 +235,7 @@ MonoBehaviour:
   _attackRate: 1.5
   _stopDistance: 4
   _chargeTime: 0.8
-  _laserDamage: 3
+  _laserDamage: 10
   _laserLine: {fileID: -204711343556614493}
   _firePoint: {fileID: 4962825246764516970}
   _chargeColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}

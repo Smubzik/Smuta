@@ -18,9 +18,10 @@ public abstract class EnemyVisualBase : MonoBehaviour
 
     protected virtual void Update()
     {
-        if (_animator != null)
+        EnemyAIBase ai = GetAI();
+        if (ai != null)
         {
-            _animator.SetBool(ISRUNNING, GetAI().IsRunning());
+            _animator.SetBool(ISRUNNING, ai.IsRunning());
         }
     }
 
@@ -41,7 +42,8 @@ public abstract class EnemyVisualBase : MonoBehaviour
     {
         if (_animator != null)
             _animator.SetBool(DEATH, true);
-        _spriteRenderer.sortingOrder = -1;
+        if (_spriteRenderer != null)
+            _spriteRenderer.sortingOrder = -1;
     }
 
     public virtual void TriggerAttackAnimationTurnOff() => GetEntity().PolygonColliderTurnOff();

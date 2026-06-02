@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class UpgradeManager : MonoBehaviour
 {
     public static UpgradeManager Instance;
-    
+
     public GameObject upgradeMenuPanel;
     public Transform turretUpgradesContainer;
     public Transform playerUpgradesContainer;
@@ -14,17 +14,18 @@ public class UpgradeManager : MonoBehaviour
     public List<PlayerUpgradeData> availablePlayerUpgrades;
     public TextMeshProUGUI currencyText;
     public GameObject settingsButton;
-    
+
     public GameObject basicTurretPrefab;
     public GameObject rapidFireTurretPrefab;
     public GameObject sniperTurretPrefab;
     public GameObject shotgunTurretPrefab;
     public GameObject laserTurretPrefab;
-    
+
     private Train player;
     private Turret currentTurret;
     private static bool isFirstRun = false;
-    
+    private bool isUpdatingMenu = false; // Защита от рекурсивных вызовов
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -34,12 +35,12 @@ public class UpgradeManager : MonoBehaviour
         }
         Instance = this;
     }
-    
+
     private void Start()
     {
         player = FindObjectOfType<Train>();
         currentTurret = FindObjectOfType<Turret>();
-        
+
         if (!isFirstRun)
         {
             isFirstRun = true;
@@ -52,7 +53,7 @@ public class UpgradeManager : MonoBehaviour
             currentTurret._startTime = GameData.TurretFireDelay;
             currentTurret.extraProjectiles = GameData.TurretExtraProjectiles;
         }
-        
+
         if (player != null)
         {
             if (GameData.BonusMaxHealth > 0)
@@ -64,64 +65,71 @@ public class UpgradeManager : MonoBehaviour
             if (GameData.BonusRegeneration > 0)
                 player.UpgradeRegeneration(GameData.BonusRegeneration);
         }
-        
+
         UpdateCurrencyUI();
         LoadUpgrades();
-        
+
         if (upgradeMenuPanel != null)
             upgradeMenuPanel.SetActive(false);
     }
-    
+
     private void Update()
     {
-        // В ПЕРВУЮ ОЧЕРЕДЬ проверяем Escape для закрытия магазина
+        // Только закрытие магазина по Escape
         if (Input.GetKeyDown(KeyCode.Escape) && upgradeMenuPanel != null && upgradeMenuPanel.activeSelf)
         {
             ToggleUpgradeMenu();
             return;
         }
-        
+
         // Если игра на паузе — не открываем магазин
         if (Time.timeScale == 0f) return;
-        
+
         // Открытие магазина по U
         if (Input.GetKeyDown(KeyCode.U))
         {
             ToggleUpgradeMenu();
         }
     }
-    
+
     public void ToggleUpgradeMenu()
     {
         if (upgradeMenuPanel == null) return;
-        
+
         bool isOpen = !upgradeMenuPanel.activeSelf;
-        upgradeMenuPanel.SetActive(isOpen);
-        
-        if (settingsButton != null)
-            settingsButton.SetActive(!isOpen);
-        
+
         if (isOpen)
         {
+            // Открываем магазин
+            upgradeMenuPanel.SetActive(true);
+            if (settingsButton != null)
+                settingsButton.SetActive(false);
             Time.timeScale = 0f;
             LoadUpgrades();
         }
         else
         {
+            // Закрываем магазин и блокируем паузу на этот кадр
+            upgradeMenuPanel.SetActive(false);
+            if (settingsButton != null)
+                settingsButton.SetActive(true);
             Time.timeScale = 1f;
+
+            // ВАЖНО: блокируем открытие паузы в этом же кадре
+            PauseMenu.BlockPauseForThisFrame();
         }
     }
-    
+
     private void LoadUpgrades()
     {
         if (turretUpgradesContainer == null || playerUpgradesContainer == null) return;
-        
+
         foreach (Transform child in turretUpgradesContainer)
             Destroy(child.gameObject);
-        
+
         foreach (Transform child in playerUpgradesContainer)
             Destroy(child.gameObject);
-        
+
         foreach (var upgrade in availableTurretUpgrades)
         {
             if (upgrade == null) continue;
@@ -129,7 +137,7 @@ public class UpgradeManager : MonoBehaviour
             var ui = item.GetComponent<UpgradeItemUI>();
             if (ui != null) ui.SetupTurretUpgrade(upgrade, this);
         }
-        
+
         foreach (var upgrade in availablePlayerUpgrades)
         {
             if (upgrade == null) continue;
@@ -138,7 +146,7 @@ public class UpgradeManager : MonoBehaviour
             if (ui != null) ui.SetupPlayerUpgrade(upgrade, this);
         }
     }
-    
+
     public bool PurchaseUpgrade(int price)
     {
         if (GameData.Currency >= price)
@@ -149,11 +157,11 @@ public class UpgradeManager : MonoBehaviour
         }
         return false;
     }
-    
+
     public void ApplyTurretUpgrade(TurretUpgradeData upgrade)
     {
         if (currentTurret == null) return;
-        
+
         if (PurchaseUpgrade(upgrade.upgradePrice))
         {
             switch (upgrade.upgradeType)
@@ -179,11 +187,11 @@ public class UpgradeManager : MonoBehaviour
             LoadUpgrades();
         }
     }
-    
+
     public void ApplyPlayerUpgrade(PlayerUpgradeData upgrade)
     {
         if (player == null) return;
-        
+
         if (PurchaseUpgrade(upgrade.upgradePrice))
         {
             switch (upgrade.upgradeType)
@@ -209,15 +217,15 @@ public class UpgradeManager : MonoBehaviour
             LoadUpgrades();
         }
     }
-    
+
     private void SwitchTurret(TurretType type)
     {
         if (currentTurret == null) return;
-        
+
         Vector3 pos = currentTurret.transform.position;
         Quaternion rot = currentTurret.transform.rotation;
         Destroy(currentTurret.gameObject);
-        
+
         GameObject prefab = type switch
         {
             TurretType.RapidFire => rapidFireTurretPrefab,
@@ -226,7 +234,7 @@ public class UpgradeManager : MonoBehaviour
             TurretType.Laser => laserTurretPrefab,
             _ => basicTurretPrefab
         };
-        
+
         if (prefab != null)
         {
             GameObject obj = Instantiate(prefab, pos, rot);
@@ -236,15 +244,15 @@ public class UpgradeManager : MonoBehaviour
             currentTurret.extraProjectiles = GameData.TurretExtraProjectiles;
         }
     }
-    
+
     private void UpdateCurrencyUI()
     {
         if (currencyText != null)
             currencyText.text = $"Монеты: {GameData.Currency}";
     }
-    
+
     public bool IsUpgradeMenuOpen() => upgradeMenuPanel != null && upgradeMenuPanel.activeSelf;
-    
+
     public void AddCurrency(int amount)
     {
         GameData.Currency += amount;

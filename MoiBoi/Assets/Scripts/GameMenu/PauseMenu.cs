@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -8,6 +9,10 @@ public class PauseMenu : MonoBehaviour
     public GameObject settingsButton;
     private UpgradeManager upgradeManager;
 
+    // Статический флаг, который блокирует паузу на один кадр
+    private static bool blockPauseThisFrame = false;
+
+    [System.Obsolete]
     void Start()
     {
         upgradeManager = FindObjectOfType<UpgradeManager>();
@@ -15,7 +20,14 @@ public class PauseMenu : MonoBehaviour
 
     void Update()
     {
-        // Если магазин открыт — не реагируем на Escape (не открываем паузу)
+        // Сбрасываем флаг в начале каждого кадра
+        if (blockPauseThisFrame)
+        {
+            blockPauseThisFrame = false;
+            return;
+        }
+
+        // Если магазин открыт — не реагируем на Escape
         if (upgradeManager != null && upgradeManager.IsUpgradeMenuOpen())
             return;
 
@@ -24,6 +36,12 @@ public class PauseMenu : MonoBehaviour
             if (_pausegame) Resume();
             else Pause();
         }
+    }
+
+    // Статический метод для блокировки паузы
+    public static void BlockPauseForThisFrame()
+    {
+        blockPauseThisFrame = true;
     }
 
     public void Resume()
@@ -46,10 +64,11 @@ public class PauseMenu : MonoBehaviour
     {
         if (upgradeManager != null && upgradeManager.IsUpgradeMenuOpen())
             upgradeManager.ToggleUpgradeMenu();
-        
+
         Time.timeScale = 1f;
         SceneManager.LoadScene("Menu");
     }
+
     public void NewGame()
     {
         GameData.ResetAll();
