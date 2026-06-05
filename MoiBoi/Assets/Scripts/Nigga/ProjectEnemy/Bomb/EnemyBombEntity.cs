@@ -4,16 +4,25 @@ public class EnemyBombEntity : EnemyEntityBase
 {
     private EnemyBombAI _enemyAI;
 
+    [Header("Reward")]
+    public int coinReward = 50;
+
     protected override void Awake()
     {
         base.Awake();
         _enemyAI = GetComponent<EnemyBombAI>();
+
     }
 
     protected override void OnDeath()
     {
-        // Если умирает от пули — тоже взрывается
+        UpgradeManager upgradeManager = FindObjectOfType<UpgradeManager>();
+        if (upgradeManager != null)
+        {
+            upgradeManager.AddCurrency(coinReward);
+            Debug.Log($"+{coinReward} монет с врага!");
+        }
+
         _enemyAI.SetDeathState();
-        // Можно вызвать взрыв
     }
 }

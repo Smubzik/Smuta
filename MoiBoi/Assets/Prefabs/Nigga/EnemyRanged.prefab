@@ -192,7 +192,7 @@ Transform:
   m_GameObject: {fileID: 7017763053053787615}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 309.84064, y: 519.83813, z: 0}
+  m_LocalPosition: {x: 10.029608, y: 7.139777, z: 0}
   m_LocalScale: {x: 1.46, y: 1.46, z: 1.46}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -307,15 +307,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22f017b7424b581428d84b1083019e96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyRangedAI
-  _chasingSpeed: 3
-  _isAttackingEnemy: 1
-  _attackRange: 6
-  _attackRate: 1.5
-  _stopDistance: 4
+  _enemy_entity_base: {fileID: 404858962258584160}
   _projectilePrefab: {fileID: 1630820213853087224, guid: 3122a5103e50c8d4f8f16abb6361e53d, type: 3}
   _firePoint: {fileID: 4426636339208000802}
-  _projectileSpeed: 10
-  _projectileDamage: 2
 --- !u!114 &404858962258584160
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -328,7 +322,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aea9cc79aaba0704f8f8b581f0d026a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyRangedEntity
-  _enemySO: {fileID: 11400000, guid: 9dc670be765fb41cb8918dc4b3b2483c, type: 2}
+  _enemySO: {fileID: 11400000, guid: 0b3f19d1133035a45817deb5fd634a8e, type: 2}
   coinReward: 20
 --- !u!114 &15658708687618198
 MonoBehaviour:

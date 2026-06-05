@@ -3,11 +3,6 @@ using System.Collections;
 
 public class EnemyBombAI : EnemyAIBase
 {
-    [Header("Bomb Settings")]
-    [SerializeField] private float _explosionRadius = 3f;
-    [SerializeField] private int _explosionDamage = 50;
-    [SerializeField] private GameObject _explosionEffect;
-    [SerializeField] private float _explosionDelay = 0.5f;
 
     private bool _isExploding = false;
 
@@ -27,7 +22,7 @@ public class EnemyBombAI : EnemyAIBase
         if (_isExploding) return;
 
         float distance = GetDistanceToPlayer();
-        if (distance <= _stopDistance)
+        if (distance <= _enemy_entity_base._enemySO._stopDistance)
         {
             _navMeshAgent.ResetPath();
         }
@@ -45,7 +40,7 @@ public class EnemyBombAI : EnemyAIBase
         // Мигаем красным
         StartCoroutine(BlinkRed());
 
-        yield return new WaitForSeconds(_explosionDelay);
+        yield return new WaitForSeconds(_enemy_entity_base._enemySO._explosionDelay);
 
         // Взрыв
         Explode();
@@ -54,41 +49,41 @@ public class EnemyBombAI : EnemyAIBase
     private void Explode()
     {
         // Эффект взрыва
-        if (_explosionEffect != null)
+        if (_enemy_entity_base._enemySO._explosionEffect != null)
         {
-            Instantiate(_explosionEffect, transform.position, Quaternion.identity);
+            Instantiate(_enemy_entity_base._enemySO._explosionEffect, transform.position, Quaternion.identity);
         }
 
         // Урон всем в радиусе (ИГРОКУ И ВРАГАМ)
-        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, _explosionRadius);
+        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, _enemy_entity_base._enemySO._explosionRadius);
 
         foreach (Collider2D hit in hitColliders)
         {
             // Урон игроку
             if (hit.TryGetComponent(out Train player))
             {
-                player.TakeDamage(_explosionDamage);
-                Debug.Log($"Bomb hit player! Damage: {_explosionDamage}");
+                player.TakeDamage(_enemy_entity_base._enemySO.enemyDamageAmount);
+                Debug.Log($"Bomb hit player! Damage: {_enemy_entity_base._enemySO.enemyDamageAmount}");
             }
 
             // Урон другим врагам (ближний бой)
             if (hit.TryGetComponent(out EnemyMeleeEntity enemy))
             {
-                enemy.TakeDamage(transform, _explosionDamage);
-                Debug.Log($"Bomb hit enemy! Damage: {_explosionDamage}");
+                enemy.TakeDamage(transform, _enemy_entity_base._enemySO.enemyDamageAmount);
+                Debug.Log($"Bomb hit enemy! Damage: {_enemy_entity_base._enemySO.enemyDamageAmount}");
             }
 
             // Урон другим врагам (стреляющий)
             if (hit.TryGetComponent(out EnemyRangedEntity rangedEnemy))
             {
-                rangedEnemy.TakeDamage(transform, _explosionDamage);
-                Debug.Log($"Bomb hit ranged enemy! Damage: {_explosionDamage}");
+                rangedEnemy.TakeDamage(transform, _enemy_entity_base._enemySO.enemyDamageAmount);
+                Debug.Log($"Bomb hit ranged enemy! Damage: {_enemy_entity_base._enemySO.enemyDamageAmount}");
             }
 
             if (hit.TryGetComponent(out EnemyLaserEntity laserEnemy))
             {
-                laserEnemy.TakeDamage(transform, _explosionDamage);
-                Debug.Log($"Bomb hit laser enemy! Damage: {_explosionDamage}");
+                laserEnemy.TakeDamage(transform, _enemy_entity_base._enemySO.enemyDamageAmount);
+                Debug.Log($"Bomb hit laser enemy! Damage: {_enemy_entity_base._enemySO.enemyDamageAmount}");
             }
         }
 
@@ -102,7 +97,7 @@ public class EnemyBombAI : EnemyAIBase
         if (sr == null) yield break;
 
         float elapsed = 0f;
-        while (elapsed < _explosionDelay)
+        while (elapsed < _enemy_entity_base._enemySO._explosionDelay)
         {
             sr.color = Color.red;
             yield return new WaitForSeconds(0.1f);

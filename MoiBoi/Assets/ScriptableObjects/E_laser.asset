@@ -10,8 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 772489ff582bc5e4d96af8c739c2946a, type: 3}
-  m_Name: ProjectEnemy
+  m_Name: E_laser
   m_EditorClassIdentifier: Assembly-CSharp::EnemySO
-  enemyName: Golem
+  enemyName: Laser
   enemyHealth: 30
-  enemyDamageAmount: 3
+  enemyDamageAmount: 5
+  _chasingSpeed: 3
+  _isAttackingEnemy: 1
+  _attackRange: 8
+  _attackRate: 1.5
+  _stopDistance: 7
+  _explosionRadius: 0
+  _explosionDelay: 0
+  _explosionEffect: {fileID: 0}
+  _projectileSpeed: 10
+  _chargeTime: 0.8
+  _chargeColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  _fireColor: {r: 1, g: 0, b: 0, a: 1}
+  _nextAttackTime: 0

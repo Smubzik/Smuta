@@ -2,11 +2,10 @@ using UnityEngine;
 
 public class EnemyRangedAI : EnemyAIBase
 {
+
     [Header("Ranged")]
     [SerializeField] private GameObject _projectilePrefab;
     [SerializeField] private Transform _firePoint;
-    [SerializeField] private float _projectileSpeed = 10f;
-    [SerializeField] private int _projectileDamage = 10;
 
     private bool _isInPosition = false;
 
@@ -14,7 +13,7 @@ public class EnemyRangedAI : EnemyAIBase
     {
         float distance = GetDistanceToPlayer();
 
-        if (distance <= _stopDistance)
+        if (distance <= _enemy_entity_base._enemySO._stopDistance)
         {
             if (!_isInPosition)
             {
@@ -45,7 +44,7 @@ public class EnemyRangedAI : EnemyAIBase
         EnemyBullet bullet = projectile.GetComponent<EnemyBullet>();
         if (bullet != null)
         {
-            bullet.Initialize(direction, _projectileSpeed, _projectileDamage);
+            bullet.Initialize(direction, _enemy_entity_base._enemySO._projectileSpeed, _enemy_entity_base._enemySO.enemyDamageAmount);
         }
     }
 }

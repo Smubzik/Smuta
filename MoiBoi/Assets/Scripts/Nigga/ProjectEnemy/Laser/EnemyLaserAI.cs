@@ -3,17 +3,12 @@ using UnityEngine;
 
 public class EnemyLaserAI : EnemyAIBase
 {
-    [Header("Laser Settings")]
-    [SerializeField] private float _chargeTime = 0.8f;
-    [SerializeField] private int _laserDamage = 20;
-
     [Header("Visual")]
     [SerializeField] private LineRenderer _laserLine;
     [SerializeField] private Transform _firePoint;
-    [SerializeField] private Color _chargeColor = Color.yellow;
-    [SerializeField] private Color _fireColor = Color.red;
 
-    private bool _isAttacking = false;
+    private float _attackStartTime = -999f;
+    private bool _isLaserActive = false;
 
     protected override void Awake()
     {
@@ -27,65 +22,98 @@ public class EnemyLaserAI : EnemyAIBase
     protected override void OnEnterAttackingState()
     {
         base.OnEnterAttackingState();
-        if (!_isAttacking)
-            StartCoroutine(LaserAttackCoroutine());
+
+        // Начинаем новую атаку
+        if (_attackStartTime < 0)
+        {
+            _attackStartTime = Time.time;
+            StartCoroutine(LaserSequence());
+        }
     }
 
     protected override void OnExitAttackingState()
     {
         base.OnExitAttackingState();
+
+        // Сбрасываем атаку при выходе из состояния
+        _attackStartTime = -999f;
+        _isLaserActive = false;
         if (_laserLine != null)
             _laserLine.enabled = false;
-        _isAttacking = false;
     }
 
     protected override void ChasingBehaviour()
     {
         float distance = GetDistanceToPlayer();
-        if (distance <= _stopDistance)
+        if (distance <= _enemy_entity_base._enemySO._stopDistance)
             _navMeshAgent.ResetPath();
         else
             _navMeshAgent.SetDestination(GetTargetPoint());
     }
 
-    private IEnumerator LaserAttackCoroutine()
+    private IEnumerator LaserSequence()
     {
-        _isAttacking = true;
         _navMeshAgent.ResetPath();
 
-        // Зарядка
+        // Фаза зарядки (жёлтый лазер)
         if (_laserLine != null)
         {
             _laserLine.enabled = true;
-            _laserLine.startColor = _chargeColor;
-            _laserLine.endColor = _chargeColor;
+            _laserLine.startColor = _enemy_entity_base._enemySO._chargeColor;
+            _laserLine.endColor = _enemy_entity_base._enemySO._chargeColor;
             UpdateLaserLine();
         }
 
         InvokeOnAttack();
-        yield return new WaitForSeconds(_chargeTime);
+        yield return new WaitForSeconds(_enemy_entity_base._enemySO._chargeTime);
 
-        // Выстрел
+        // Фаза выстрела (красный лазер + урон)
+        _isLaserActive = true;
         if (_laserLine != null)
         {
-            _laserLine.startColor = _fireColor;
-            _laserLine.endColor = _fireColor;
+            _laserLine.startColor = _enemy_entity_base._enemySO._fireColor;
+            _laserLine.endColor = _enemy_entity_base._enemySO._fireColor;
         }
 
-        // ===== УРОН БЕЗ РЕЙКАСТА =====
+        // Наносим урон
         if (Train.Instance != null)
         {
-            Train.Instance.TakeDamage(_laserDamage);
-            Debug.Log($"LASER DAMAGE: {_laserDamage}");
+            float distance = Vector3.Distance(transform.position, Train.Instance.transform.position);
+            if (distance <= _enemy_entity_base._enemySO._attackRange)
+            {
+                Train.Instance.TakeDamage(_enemy_entity_base._enemySO.enemyDamageAmount);
+                Debug.Log($"LASER HIT! Damage: {_enemy_entity_base._enemySO.enemyDamageAmount}");
+            }
         }
-        // =============================
 
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.3f);
 
+        // Завершаем атаку
+        _isLaserActive = false;
         if (_laserLine != null)
             _laserLine.enabled = false;
 
-        _isAttacking = false;
+        // Сбрасываем таймер, чтобы можно было атаковать снова
+        _attackStartTime = -999f;
+
+        // Принудительно выходим из состояния атаки на время перезарядки
+        _currentState = State.Chasing;
+    }
+
+    private void Update()
+    {
+        // Обновляем линию лазера во время атаки
+        if (_isLaserActive && _laserLine != null && _laserLine.enabled)
+        {
+            UpdateLaserLine();
+        }
+
+        // Вызываем базовый Update для обработки состояний
+        if (_currentState != State.Death)
+        {
+            StateHandler();
+            UpdateFacingDirection();
+        }
     }
 
     private void UpdateLaserLine()

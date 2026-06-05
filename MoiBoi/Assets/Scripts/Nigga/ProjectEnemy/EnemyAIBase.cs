@@ -4,21 +4,14 @@ using System;
 
 public abstract class EnemyAIBase : MonoBehaviour
 {
-    [Header("Movement Settings")]
-    [SerializeField] protected float _chasingSpeed = 3f;           // Скорость преследования
 
-    [Header("Attack Settings")]
-    [SerializeField] protected bool _isAttackingEnemy = true;
-    [SerializeField] protected float _attackRange = 6f;            // Дальность атаки
-    [SerializeField] protected float _attackRate = 1.5f;           // Частота атаки
 
-    [Header("Ranged Specific (для стреляющих)")]
-    [SerializeField] protected float _stopDistance = 4f;           // Дистанция остановки (только для стрелков)
+    public EnemyEntityBase _enemy_entity_base;
 
     protected NavMeshAgent _navMeshAgent;
     protected State _currentState;
     protected Collider2D _playerCollider;
-    protected float _nextAttackTime;
+
 
     public event EventHandler OnAttack;
 
@@ -35,7 +28,7 @@ public abstract class EnemyAIBase : MonoBehaviour
         _navMeshAgent = GetComponent<NavMeshAgent>();
         _navMeshAgent.updateRotation = false;
         _navMeshAgent.updateUpAxis = false;
-        _navMeshAgent.speed = _chasingSpeed;
+        _navMeshAgent.speed = _enemy_entity_base._enemySO._chasingSpeed;
         _currentState = State.Chasing;  // Всегда начинаем с преследования
     }
 
@@ -85,7 +78,7 @@ public abstract class EnemyAIBase : MonoBehaviour
 
         // Определяем новое состояние
         State newState = State.Chasing;
-        if (_isAttackingEnemy && distance <= _attackRange)
+        if (_enemy_entity_base._enemySO._isAttackingEnemy && distance <= _enemy_entity_base._enemySO._attackRange)
             newState = State.Attacking;
 
         // Переключаем состояние если нужно
@@ -100,7 +93,7 @@ public abstract class EnemyAIBase : MonoBehaviour
             }
             else if (_currentState == State.Chasing)
             {
-                _navMeshAgent.speed = _chasingSpeed;
+                _navMeshAgent.speed = _enemy_entity_base._enemySO._chasingSpeed;
                 OnExitAttackingState();   // Виртуальный метод для наследников
             }
         }
@@ -124,11 +117,11 @@ public abstract class EnemyAIBase : MonoBehaviour
 
     protected virtual void AttackBehaviour()
     {
-        if (Time.time > _nextAttackTime)
+        if (Time.time > _enemy_entity_base._enemySO._nextAttackTime)
         {
             PerformAttack();
             OnAttack?.Invoke(this, EventArgs.Empty);
-            _nextAttackTime = Time.time + _attackRate;
+            _enemy_entity_base._enemySO._nextAttackTime = Time.time + _enemy_entity_base._enemySO._attackRate;
         }
     }
 

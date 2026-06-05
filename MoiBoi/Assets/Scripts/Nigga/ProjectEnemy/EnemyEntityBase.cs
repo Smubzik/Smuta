@@ -3,7 +3,7 @@ using System;
 
 public abstract class EnemyEntityBase : MonoBehaviour
 {
-    [SerializeField] protected EnemySO _enemySO;
+    [SerializeField] public EnemySO _enemySO;
     protected int _currentHealth;
     protected PolygonCollider2D _polygonCollider2D;
     protected BoxCollider2D _boxCollider2D;
