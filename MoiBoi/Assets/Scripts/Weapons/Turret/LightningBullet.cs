@@ -36,10 +36,13 @@ public class LightningBullet : MonoBehaviour
             _nextDamageTime = Time.time + attackRate;
         }
     }
-    
+
     void DamageAllEnemies()
     {
-        foreach (EnemyEntityBase enemy in _enemiesInZone)
+        // Создаём копию списка, чтобы безопасно перебирать
+        List<EnemyEntityBase> enemiesCopy = new List<EnemyEntityBase>(_enemiesInZone);
+
+        foreach (EnemyEntityBase enemy in enemiesCopy)
         {
             if (enemy != null)
             {

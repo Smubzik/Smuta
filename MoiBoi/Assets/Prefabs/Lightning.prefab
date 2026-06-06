@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4677554993755794407}
   - component: {fileID: 3488900413940982152}
   - component: {fileID: 6745041327873204476}
-  - component: {fileID: 1197483159762728071}
+  - component: {fileID: 6412074905527594302}
   m_Layer: 11
   m_Name: Lightning
   m_TagString: Untagged
@@ -107,7 +107,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LightningBullet
   damage: 10
   attackRate: 0.2
---- !u!61 &1197483159762728071
+--- !u!61 &6412074905527594302
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -123,7 +123,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 832
+    m_Bits: 2880
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -141,7 +141,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.20488322, y: -0.039400578}
+  m_Offset: {x: 0, y: -0.067869425}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -151,5 +151,5 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 2.523567, y: 4.887866}
+  m_Size: {x: 2.9333334, y: 4.8909554}
   m_EdgeRadius: 0

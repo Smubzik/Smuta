@@ -20,5 +20,6 @@ public enum PlayerUpgradeType
     MaxHealth,
     Speed,
     Armor,
-    Regeneration
+    Regeneration,
+    Heal
 }
