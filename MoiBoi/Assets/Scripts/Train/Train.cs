@@ -112,6 +112,8 @@ public class Train : MonoBehaviour
             
             UpdateHealthUI();
             StartCoroutine(DamageRecoveryRoutine());
+
+
         }
         DetectFquarter();
         DetectSquarter();

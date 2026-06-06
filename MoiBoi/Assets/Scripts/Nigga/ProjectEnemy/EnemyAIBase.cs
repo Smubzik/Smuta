@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 using System;
+using Unity.VisualScripting;
 
 public abstract class EnemyAIBase : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public abstract class EnemyAIBase : MonoBehaviour
     protected NavMeshAgent _navMeshAgent;
     protected State _currentState;
     protected Collider2D _playerCollider;
+
+    private float _nextAttackTime;
 
 
     public event EventHandler OnAttack;
@@ -52,7 +55,6 @@ public abstract class EnemyAIBase : MonoBehaviour
         StateHandler();
         UpdateFacingDirection();
     }
-
     protected virtual Vector3 GetTargetPoint()
     {
         if (Train.Instance == null) return transform.position;
@@ -117,11 +119,11 @@ public abstract class EnemyAIBase : MonoBehaviour
 
     protected virtual void AttackBehaviour()
     {
-        if (Time.time > _enemy_entity_base._enemySO._nextAttackTime)
+        if (Time.time > _nextAttackTime)
         {
             PerformAttack();
             OnAttack?.Invoke(this, EventArgs.Empty);
-            _enemy_entity_base._enemySO._nextAttackTime = Time.time + _enemy_entity_base._enemySO._attackRate;
+            _nextAttackTime = Time.time + _enemy_entity_base._enemySO._attackRate;
         }
     }
 

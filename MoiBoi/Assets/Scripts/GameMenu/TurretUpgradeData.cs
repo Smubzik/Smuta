@@ -15,6 +15,8 @@ public class TurretUpgradeData : ScriptableObject
     public float fireRateBonus;
     public int extraProjectiles;
     public float rangeBonus;
+    
+    public int maxPurchases = 3; 
 }
 
 public enum TurretType

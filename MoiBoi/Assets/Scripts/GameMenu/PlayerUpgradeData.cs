@@ -8,11 +8,12 @@ public class PlayerUpgradeData : ScriptableObject
     public int upgradePrice;
     public Sprite upgradeIcon;
     
-    public PlayerUpgradeType upgradeType;  // ← ДОБАВЬТЕ ЭТУ СТРОКУ
-    
+    public PlayerUpgradeType upgradeType;
     public int healthBonus;
     public float speedBonus;
     public float armorBonus;
+    
+    public int maxPurchases = 3;  
 }
 
 public enum PlayerUpgradeType

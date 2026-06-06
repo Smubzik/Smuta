@@ -2,12 +2,13 @@ using UnityEngine;
 
 public class EnemyRangedAI : EnemyAIBase
 {
-
     [Header("Ranged")]
     [SerializeField] private GameObject _projectilePrefab;
     [SerializeField] private Transform _firePoint;
 
-    private bool _isInPosition = false;
+    private float _nextAttackTime;
+
+    private bool _isAttacking = false;
 
     protected override void ChasingBehaviour()
     {
@@ -15,17 +16,31 @@ public class EnemyRangedAI : EnemyAIBase
 
         if (distance <= _enemy_entity_base._enemySO._stopDistance)
         {
-            if (!_isInPosition)
-            {
-                _navMeshAgent.ResetPath();
-                _isInPosition = true;
-            }
+            _navMeshAgent.ResetPath();
         }
         else
         {
-            _isInPosition = false;
             _navMeshAgent.SetDestination(GetTargetPoint());
         }
+    }
+
+    protected override void AttackBehaviour()
+    {
+        // Стреляем только если не атакуем в данный момент
+        if (!_isAttacking && Time.time >= _nextAttackTime)
+        {
+            _isAttacking = true;
+            PerformAttack();
+            InvokeOnAttack();
+            _nextAttackTime = Time.time + _enemy_entity_base._enemySO._attackRate;
+            // Сбрасываем флаг после задержки (как перезарядка)
+            Invoke(nameof(ResetAttackFlag), 0.5f);
+        }
+    }
+
+    private void ResetAttackFlag()
+    {
+        _isAttacking = false;
     }
 
     protected override void PerformAttack()
@@ -45,6 +60,7 @@ public class EnemyRangedAI : EnemyAIBase
         if (bullet != null)
         {
             bullet.Initialize(direction, _enemy_entity_base._enemySO._projectileSpeed, _enemy_entity_base._enemySO.enemyDamageAmount);
+            Debug.Log($"Ranged enemy shot! Damage: {_enemy_entity_base._enemySO.enemyDamageAmount}");
         }
     }
 }

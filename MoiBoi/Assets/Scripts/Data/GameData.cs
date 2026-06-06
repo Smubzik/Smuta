@@ -5,8 +5,20 @@ public static class GameData
     // ===== МОНЕТЫ =====
     public static int Currency
     {
-        get => PlayerPrefs.GetInt("Currency", 1000);
+        get => PlayerPrefs.GetInt("Currency", 200);
         set => PlayerPrefs.SetInt("Currency", value);
+    }
+    
+    // ===== КОЛИЧЕСТВО ПОКУПОК УЛУЧШЕНИЙ =====
+    public static int GetUpgradePurchaseCount(string upgradeId)
+    {
+        return PlayerPrefs.GetInt($"UpgradeCount_{upgradeId}", 0);
+    }
+    
+    public static void SetUpgradePurchaseCount(string upgradeId, int count)
+    {
+        PlayerPrefs.SetInt($"UpgradeCount_{upgradeId}", count);
+        PlayerPrefs.Save();
     }
     
     // ===== УЛУЧШЕНИЯ ДЛЯ КАЖДОЙ ТУРЕЛИ =====
@@ -59,9 +71,9 @@ public static class GameData
     {
         switch (type)
         {
-            case TurretType.Basic: return 10f;
-            case TurretType.Laser: return 15f;
-            case TurretType.RapidFire: return 5f;
+            case TurretType.Basic: return 10f;      // 10 урон
+            case TurretType.Laser: return 3f;       // 3 урон
+            case TurretType.RapidFire: return 2f;    // 2 урон
             case TurretType.Sniper: return 30f;
             case TurretType.Shotgun: return 8f;
             default: return 10f;
@@ -74,7 +86,7 @@ public static class GameData
         {
             case TurretType.Basic: return 0.5f;
             case TurretType.Laser: return 0.2f;
-            case TurretType.RapidFire: return 0.15f;
+            case TurretType.RapidFire: return 0.1f;   // очень быстрая
             case TurretType.Sniper: return 1f;
             case TurretType.Shotgun: return 0.7f;
             default: return 0.5f;
@@ -86,7 +98,7 @@ public static class GameData
         switch (type)
         {
             case TurretType.Basic: return 10f;
-            case TurretType.Laser: return 12f;
+            case TurretType.Laser: return 5f;
             case TurretType.RapidFire: return 8f;
             case TurretType.Sniper: return 15f;
             case TurretType.Shotgun: return 7f;

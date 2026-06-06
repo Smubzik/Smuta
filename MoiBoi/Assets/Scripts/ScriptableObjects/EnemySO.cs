@@ -28,6 +28,4 @@ public class EnemySO : ScriptableObject
     public Color _chargeColor = Color.yellow;
     public Color _fireColor = Color.red;
 
-    public float _nextAttackTime;
-
 }

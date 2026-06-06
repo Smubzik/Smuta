@@ -22,3 +22,4 @@ MonoBehaviour:
   healthBonus: 10
   speedBonus: 0
   armorBonus: 0
+  maxPurchases: 5

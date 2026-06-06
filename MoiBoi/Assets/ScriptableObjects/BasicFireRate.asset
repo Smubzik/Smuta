@@ -22,3 +22,5 @@ MonoBehaviour:
   damageBonus: 0
   fireRateBonus: 0.07
   extraProjectiles: 0
+  rangeBonus: 0
+  maxPurchases: 5

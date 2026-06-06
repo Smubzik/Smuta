@@ -28,7 +28,7 @@ public class UpgradeManager : MonoBehaviour
     public GameObject activeWeaponParent;
     public int selectedTurretIndex = 0;
     
-    [Header("Turret Tabs (кнопки вкладки)")]
+    [Header("Turret Tabs")]
     public Button basicTab;
     public Button laserTab;
     public Button rapidFireTab;
@@ -38,9 +38,9 @@ public class UpgradeManager : MonoBehaviour
     
     private Train player;
     private Turret currentTurret;
+    private RapidTurret currentRapidTurret;
+    private LightningTurret currentLightningTurret;
     private static bool isFirstRun = false;
-    
-    // Текущая выбранная турель в магазине
     private TurretType currentShopTurretType = TurretType.Basic;
     
     private void Awake()
@@ -57,44 +57,31 @@ public class UpgradeManager : MonoBehaviour
     {
         player = FindObjectOfType<Train>();
         currentTurret = FindObjectOfType<Turret>();
+        currentRapidTurret = FindObjectOfType<RapidTurret>();
+        currentLightningTurret = FindObjectOfType<LightningTurret>();
         
         if (!isFirstRun)
         {
             isFirstRun = true;
             GameData.ResetAll();
             Debug.Log("Новая игра");
+            ResetLightningTurretRange();
+        }
+        else
+        {
+            LoadLightningTurretRange();
         }
         
-        // Настройка кнопок-вкладок
         SetupTurretTabs();
         
-        // Загружаем улучшения для начальной турели
-        if (currentTurret != null)
-        {
-            TurretType currentType = GetCurrentTurretType();
-            currentTurret.damage = GameData.GetTurretDamage(currentType);
-            currentTurret._startTime = GameData.GetTurretFireDelay(currentType);
-            currentTurret.extraProjectiles = GameData.GetTurretExtraProjectiles(currentType);
-        }
-        
-        // Загружаем дальность для LightningTurret
-        LightningTurret lightning = FindObjectOfType<LightningTurret>();
-        if (lightning != null)
-        {
-            TurretType currentType = GetCurrentTurretType();
-            lightning.UpdateRange(GameData.GetTurretRange(currentType));
-        }
+        LoadCurrentTurretStats();
         
         if (player != null)
         {
-            if (GameData.BonusMaxHealth > 0)
-                player.UpgradeMaxHealth(GameData.BonusMaxHealth);
-            if (GameData.BonusSpeed > 0)
-                player.UpgradeSpeed(GameData.BonusSpeed);
-            if (GameData.BonusArmor > 0)
-                player.UpgradeArmor(GameData.BonusArmor);
-            if (GameData.BonusRegeneration > 0)
-                player.UpgradeRegeneration(GameData.BonusRegeneration);
+            if (GameData.BonusMaxHealth > 0) player.UpgradeMaxHealth(GameData.BonusMaxHealth);
+            if (GameData.BonusSpeed > 0) player.UpgradeSpeed(GameData.BonusSpeed);
+            if (GameData.BonusArmor > 0) player.UpgradeArmor(GameData.BonusArmor);
+            if (GameData.BonusRegeneration > 0) player.UpgradeRegeneration(GameData.BonusRegeneration);
         }
         
         UpdateCurrencyUI();
@@ -103,23 +90,59 @@ public class UpgradeManager : MonoBehaviour
             upgradeMenuPanel.SetActive(false);
     }
     
+    void LoadCurrentTurretStats()
+    {
+        TurretType currentType = GetCurrentTurretType();
+        
+        if (currentTurret != null && currentType != TurretType.Laser && currentType != TurretType.RapidFire)
+        {
+            currentTurret.damage = GameData.GetTurretDamage(currentType);
+            currentTurret._startTime = GameData.GetTurretFireDelay(currentType);
+            currentTurret.extraProjectiles = GameData.GetTurretExtraProjectiles(currentType);
+        }
+        
+        if (currentLightningTurret != null && currentType == TurretType.Laser)
+        {
+            currentLightningTurret.damage = GameData.GetTurretDamage(currentType);
+            currentLightningTurret.attackRate = GameData.GetTurretFireDelay(currentType);
+        }
+        
+        if (currentRapidTurret != null && currentType == TurretType.RapidFire)
+        {
+            currentRapidTurret.damage = GameData.GetTurretDamage(currentType);
+            currentRapidTurret._startTime = GameData.GetTurretFireDelay(currentType);
+            currentRapidTurret.extraProjectiles = GameData.GetTurretExtraProjectiles(currentType);
+        }
+    }
+    
+    void ResetLightningTurretRange()
+    {
+        if (currentLightningTurret != null)
+        {
+            currentLightningTurret.ResetRange();
+        }
+    }
+    
+    void LoadLightningTurretRange()
+    {
+        if (currentLightningTurret != null)
+        {
+            TurretType currentType = GetCurrentTurretType();
+            currentLightningTurret.UpdateRange(GameData.GetTurretRange(currentType));
+        }
+    }
+    
     void SetupTurretTabs()
     {
-        if (basicTab != null)
-            basicTab.onClick.AddListener(ShowBasicUpgrades);
-        if (laserTab != null)
-            laserTab.onClick.AddListener(ShowLaserUpgrades);
-        if (rapidFireTab != null)
-            rapidFireTab.onClick.AddListener(ShowRapidFireUpgrades);
-        if (sniperTab != null)
-            sniperTab.onClick.AddListener(ShowSniperUpgrades);
-        if (shotgunTab != null)
-            shotgunTab.onClick.AddListener(ShowShotgunUpgrades);
+        if (basicTab != null) basicTab.onClick.AddListener(ShowBasicUpgrades);
+        if (laserTab != null) laserTab.onClick.AddListener(ShowLaserUpgrades);
+        if (rapidFireTab != null) rapidFireTab.onClick.AddListener(ShowRapidFireUpgrades);
+        if (sniperTab != null) sniperTab.onClick.AddListener(ShowSniperUpgrades);
+        if (shotgunTab != null) shotgunTab.onClick.AddListener(ShowShotgunUpgrades);
         
         ShowBasicUpgrades();
     }
     
-    // ===== МЕТОДЫ ДЛЯ КНОПОК-ВКЛАДОК =====
     public void ShowBasicUpgrades() => ShowTurretUpgrades(TurretType.Basic);
     public void ShowLaserUpgrades() => ShowTurretUpgrades(TurretType.Laser);
     public void ShowRapidFireUpgrades() => ShowTurretUpgrades(TurretType.RapidFire);
@@ -137,7 +160,6 @@ public class UpgradeManager : MonoBehaviour
     
     private void Update()
     {
-        // Закрытие магазина по Escape или по U
         if (upgradeMenuPanel != null && upgradeMenuPanel.activeSelf)
         {
             if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.U))
@@ -147,13 +169,11 @@ public class UpgradeManager : MonoBehaviour
             }
         }
         
-        // Открытие магазина по U
         if (Time.timeScale != 0f && Input.GetKeyDown(KeyCode.U))
         {
             ToggleUpgradeMenu();
         }
         
-        // Переключение турелей по цифрам
         if (!IsUpgradeMenuOpen())
         {
             CheckTurretSwitchInput();
@@ -196,32 +216,25 @@ public class UpgradeManager : MonoBehaviour
         
         if (selectedTurretIndex == index) return;
         
-        // Выключаем все турели
         foreach (Transform child in activeWeaponParent.transform)
             child.gameObject.SetActive(false);
         
-        // Включаем выбранную
         activeWeaponParent.transform.GetChild(index).gameObject.SetActive(true);
+        
+        // Обновляем ссылки на текущие турели
         currentTurret = activeWeaponParent.transform.GetChild(index).GetComponent<Turret>();
+        currentRapidTurret = activeWeaponParent.transform.GetChild(index).GetComponent<RapidTurret>();
+        currentLightningTurret = activeWeaponParent.transform.GetChild(index).GetComponent<LightningTurret>();
         selectedTurretIndex = index;
         
-        // Загружаем улучшения для этой турели
-        if (currentTurret != null)
+        LoadCurrentTurretStats();
+        
+        // Обновляем дальность для LightningTurret
+        if (currentLightningTurret != null && type == TurretType.Laser)
         {
-            currentTurret.damage = GameData.GetTurretDamage(type);
-            currentTurret._startTime = GameData.GetTurretFireDelay(type);
-            currentTurret.extraProjectiles = GameData.GetTurretExtraProjectiles(type);
-            Debug.Log($"Активирована {type}: урон={currentTurret.damage}, задержка={currentTurret._startTime}");
+            currentLightningTurret.UpdateRange(GameData.GetTurretRange(type));
         }
         
-        // Загружаем дальность для LightningTurret
-        LightningTurret lightning = FindObjectOfType<LightningTurret>();
-        if (lightning != null)
-        {
-            lightning.UpdateRange(GameData.GetTurretRange(type));
-        }
-        
-        // Если магазин открыт — обновляем отображаемые улучшения
         if (IsUpgradeMenuOpen())
         {
             ShowTurretUpgrades(type);
@@ -253,16 +266,19 @@ public class UpgradeManager : MonoBehaviour
     {
         if (turretUpgradesContainer == null || playerUpgradesContainer == null) return;
         
-        // Очищаем старые
         foreach (Transform child in turretUpgradesContainer)
             Destroy(child.gameObject);
         foreach (Transform child in playerUpgradesContainer)
             Destroy(child.gameObject);
         
-        // Показываем улучшения для выбранной вкладки
+        // Улучшения турелей
         foreach (var upgrade in availableTurretUpgrades)
         {
             if (upgrade == null) continue;
+            
+            int purchaseCount = GameData.GetUpgradePurchaseCount(upgrade.name);
+            if (purchaseCount >= upgrade.maxPurchases)
+                continue;
             
             if (upgrade.upgradeType == UpgradeType.SwitchTurret)
             {
@@ -291,6 +307,11 @@ public class UpgradeManager : MonoBehaviour
         foreach (var upgrade in availablePlayerUpgrades)
         {
             if (upgrade == null) continue;
+            
+            int purchaseCount = GameData.GetUpgradePurchaseCount(upgrade.name);
+            if (purchaseCount >= upgrade.maxPurchases)
+                continue;
+            
             GameObject item = Instantiate(upgradeItemPrefab, playerUpgradesContainer);
             var ui = item.GetComponent<UpgradeItemUI>();
             if (ui != null) ui.SetupPlayerUpgrade(upgrade, this);
@@ -323,44 +344,52 @@ public class UpgradeManager : MonoBehaviour
     
     public void ApplyTurretUpgrade(TurretUpgradeData upgrade)
     {
+        int purchaseCount = GameData.GetUpgradePurchaseCount(upgrade.name);
+        if (purchaseCount >= upgrade.maxPurchases)
+        {
+            Debug.Log($"❌ {upgrade.upgradeName} уже куплено максимальное количество раз ({upgrade.maxPurchases})!");
+            return;
+        }
+        
         if (PurchaseUpgrade(upgrade.upgradePrice))
         {
+            GameData.SetUpgradePurchaseCount(upgrade.name, purchaseCount + 1);
+            Debug.Log($"✅ Куплено {upgrade.upgradeName} ({purchaseCount + 1}/{upgrade.maxPurchases})");
+            
+            TurretType targetType = upgrade.turretType;
+            
             switch (upgrade.upgradeType)
             {
                 case UpgradeType.Damage:
-                    float newDamage = GameData.GetTurretDamage(currentShopTurretType) + upgrade.damageBonus;
-                    GameData.SetTurretDamage(currentShopTurretType, newDamage);
-                    
-                    if (GetCurrentTurretType() == currentShopTurretType && currentTurret != null)
-                        currentTurret.damage = newDamage;
+                    float newDamage = GameData.GetTurretDamage(targetType) + upgrade.damageBonus;
+                    GameData.SetTurretDamage(targetType, newDamage);
+                    if (GetCurrentTurretType() == targetType)
+                        UpdateCurrentTurretDamage(newDamage);
                     break;
                     
                 case UpgradeType.FireRate:
-                    float newDelay = GameData.GetTurretFireDelay(currentShopTurretType) - upgrade.fireRateBonus;
+                    float newDelay = GameData.GetTurretFireDelay(targetType) - upgrade.fireRateBonus;
                     if (newDelay < 0.1f) newDelay = 0.1f;
-                    GameData.SetTurretFireDelay(currentShopTurretType, newDelay);
-                    
-                    if (GetCurrentTurretType() == currentShopTurretType && currentTurret != null)
-                        currentTurret._startTime = newDelay;
+                    GameData.SetTurretFireDelay(targetType, newDelay);
+                    if (GetCurrentTurretType() == targetType)
+                        UpdateCurrentTurretFireDelay(newDelay);
                     break;
                     
                 case UpgradeType.MultiShot:
-                    int newProjectiles = GameData.GetTurretExtraProjectiles(currentShopTurretType) + upgrade.extraProjectiles;
-                    GameData.SetTurretExtraProjectiles(currentShopTurretType, newProjectiles);
-                    
-                    if (GetCurrentTurretType() == currentShopTurretType && currentTurret != null)
-                        currentTurret.extraProjectiles = newProjectiles;
+                    int newProjectiles = GameData.GetTurretExtraProjectiles(targetType) + upgrade.extraProjectiles;
+                    GameData.SetTurretExtraProjectiles(targetType, newProjectiles);
+                    if (GetCurrentTurretType() == targetType)
+                        UpdateCurrentTurretExtraProjectiles(newProjectiles);
                     break;
                     
                 case UpgradeType.Range:
-                    float newRange = GameData.GetTurretRange(currentShopTurretType) + upgrade.rangeBonus;
-                    GameData.SetTurretRange(currentShopTurretType, newRange);
-                    Debug.Log($"Дальность для {currentShopTurretType} увеличена до {newRange}");
+                    float newRange = GameData.GetTurretRange(targetType) + upgrade.rangeBonus;
+                    GameData.SetTurretRange(targetType, newRange);
+                    Debug.Log($"Дальность для {targetType} увеличена до {newRange}");
                     
-                    LightningTurret lightning = FindObjectOfType<LightningTurret>();
-                    if (lightning != null)
+                    if (currentLightningTurret != null && targetType == TurretType.Laser)
                     {
-                        lightning.UpdateRange(newRange);
+                        currentLightningTurret.UpdateRange(newRange);
                     }
                     break;
                     
@@ -375,12 +404,43 @@ public class UpgradeManager : MonoBehaviour
         }
     }
     
+    void UpdateCurrentTurretDamage(float newDamage)
+    {
+        if (currentTurret != null) currentTurret.damage = newDamage;
+        if (currentRapidTurret != null) currentRapidTurret.damage = newDamage;
+        if (currentLightningTurret != null) currentLightningTurret.damage = newDamage;
+    }
+    
+    void UpdateCurrentTurretFireDelay(float newDelay)
+    {
+        if (currentTurret != null) currentTurret._startTime = newDelay;
+        if (currentRapidTurret != null) currentRapidTurret._startTime = newDelay;
+        if (currentLightningTurret != null) currentLightningTurret.attackRate = newDelay;
+    }
+    
+    void UpdateCurrentTurretExtraProjectiles(int newCount)
+    {
+        if (currentTurret != null) currentTurret.extraProjectiles = newCount;
+        if (currentRapidTurret != null) currentRapidTurret.extraProjectiles = newCount;
+        // LightningTurret не использует extraProjectiles
+    }
+    
     public void ApplyPlayerUpgrade(PlayerUpgradeData upgrade)
     {
         if (player == null) return;
         
+        int purchaseCount = GameData.GetUpgradePurchaseCount(upgrade.name);
+        if (purchaseCount >= upgrade.maxPurchases)
+        {
+            Debug.Log($"❌ {upgrade.upgradeName} уже куплено максимальное количество раз ({upgrade.maxPurchases})!");
+            return;
+        }
+        
         if (PurchaseUpgrade(upgrade.upgradePrice))
         {
+            GameData.SetUpgradePurchaseCount(upgrade.name, purchaseCount + 1);
+            Debug.Log($"✅ Куплено {upgrade.upgradeName} ({purchaseCount + 1}/{upgrade.maxPurchases})");
+            
             switch (upgrade.upgradeType)
             {
                 case PlayerUpgradeType.MaxHealth:

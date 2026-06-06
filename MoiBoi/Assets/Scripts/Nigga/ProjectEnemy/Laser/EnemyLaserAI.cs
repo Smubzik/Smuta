@@ -78,7 +78,7 @@ public class EnemyLaserAI : EnemyAIBase
         // Наносим урон
         if (Train.Instance != null)
         {
-            float distance = Vector3.Distance(transform.position, Train.Instance.transform.position);
+            float distance = GetDistanceToPlayer();
             if (distance <= _enemy_entity_base._enemySO._attackRange)
             {
                 Train.Instance.TakeDamage(_enemy_entity_base._enemySO.enemyDamageAmount);
