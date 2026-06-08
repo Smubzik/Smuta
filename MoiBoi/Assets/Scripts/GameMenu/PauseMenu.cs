@@ -8,11 +8,13 @@ public class PauseMenu : MonoBehaviour
     public GameObject _pausegamemenu;
     public GameObject settingsButton;
     private UpgradeManager upgradeManager;
+    
+    // ДОБАВЬ ЭТИ ПОЛЯ
+    public GameObject healthBarObject;
+    public GameObject coinCounterObject;
 
-    // Статический флаг, который блокирует паузу на один кадр
     private static bool blockPauseThisFrame = false;
 
-    [System.Obsolete]
     void Start()
     {
         upgradeManager = FindObjectOfType<UpgradeManager>();
@@ -20,14 +22,12 @@ public class PauseMenu : MonoBehaviour
 
     void Update()
     {
-        // Сбрасываем флаг в начале каждого кадра
         if (blockPauseThisFrame)
         {
             blockPauseThisFrame = false;
             return;
         }
 
-        // Если магазин открыт — не реагируем на Escape
         if (upgradeManager != null && upgradeManager.IsUpgradeMenuOpen())
             return;
 
@@ -38,7 +38,6 @@ public class PauseMenu : MonoBehaviour
         }
     }
 
-    // Статический метод для блокировки паузы
     public static void BlockPauseForThisFrame()
     {
         blockPauseThisFrame = true;
@@ -50,6 +49,8 @@ public class PauseMenu : MonoBehaviour
         if (settingsButton != null) settingsButton.SetActive(true);
         Time.timeScale = 1f;
         _pausegame = false;
+        
+        ShowGameUI(true);
     }
 
     public void Pause()
@@ -58,6 +59,8 @@ public class PauseMenu : MonoBehaviour
         if (settingsButton != null) settingsButton.SetActive(false);
         Time.timeScale = 0f;
         _pausegame = true;
+        
+        ShowGameUI(false);
     }
 
     public void LordMenu()
@@ -74,5 +77,14 @@ public class PauseMenu : MonoBehaviour
         GameData.ResetAll();
         SceneManager.LoadScene("Project");
         Time.timeScale = 1f;
+    }
+    
+    private void ShowGameUI(bool show)
+    {
+        if (healthBarObject != null)
+            healthBarObject.SetActive(show);
+        
+        if (coinCounterObject != null)
+            coinCounterObject.SetActive(show);
     }
 }

@@ -55,7 +55,7 @@ public class EnemyLaserAI : EnemyAIBase
     {
         _navMeshAgent.ResetPath();
 
-        // Фаза зарядки (жёлтый лазер)
+        // ===== ФАЗА ЗАРЯДКИ (анимация) =====
         if (_laserLine != null)
         {
             _laserLine.enabled = true;
@@ -64,10 +64,15 @@ public class EnemyLaserAI : EnemyAIBase
             UpdateLaserLine();
         }
 
+        // Запускаем анимацию зарядки
         InvokeOnAttack();
-        yield return new WaitForSeconds(_enemy_entity_base._enemySO._chargeTime);
 
-        // Фаза выстрела (красный лазер + урон)
+        // Ждём длину анимации зарядки (например, 0.8 сек)
+        // Если длина анимации другая — поменяй значение
+        float chargeAnimationLength = 2.0f;
+        yield return new WaitForSeconds(chargeAnimationLength);
+
+        // ===== ФАЗА ВЫСТРЕЛА =====
         _isLaserActive = true;
         if (_laserLine != null)
         {
@@ -86,14 +91,15 @@ public class EnemyLaserAI : EnemyAIBase
             }
         }
 
+        // Держим красный лазер 0.3 сек
         yield return new WaitForSeconds(0.3f);
 
-        // Завершаем атаку
+        // ===== ЗАВЕРШЕНИЕ =====
         _isLaserActive = false;
         if (_laserLine != null)
             _laserLine.enabled = false;
 
-        // Сбрасываем таймер, чтобы можно было атаковать снова
+        // Сбрасываем таймер
         _attackStartTime = -999f;
 
         // Принудительно выходим из состояния атаки на время перезарядки

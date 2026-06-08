@@ -7,6 +7,9 @@ public class UpgradeManager : MonoBehaviour
 {
     public static UpgradeManager Instance;
     
+    [Header("UI References")]
+    public GameObject coinCounterObject;
+
     [Header("UI Components")]
     public GameObject upgradeMenuPanel;
     public Transform turretUpgradesContainer;
@@ -251,6 +254,10 @@ public class UpgradeManager : MonoBehaviour
         if (settingsButton != null)
             settingsButton.SetActive(!isOpen);
         
+        // Скрываем/показываем CoinCounter
+        if (coinCounterObject != null)
+            coinCounterObject.SetActive(!isOpen);
+        
         if (isOpen)
         {
             Time.timeScale = 0f;
@@ -482,6 +489,13 @@ public class UpgradeManager : MonoBehaviour
     public void AddCurrency(int amount)
     {
         GameData.Currency += amount;
-        UpdateCurrencyUI();
+        UpdateCurrencyUI();  // обновляет текст в магазине
+        
+        // Обновляем счётчик на основном экране
+        CoinCounter coinCounter = FindObjectOfType<CoinCounter>();
+        if (coinCounter != null)
+        {
+            coinCounter.UpdateCoinDisplay();
+        }
     }
 }

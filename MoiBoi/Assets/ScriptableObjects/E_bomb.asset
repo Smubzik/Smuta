@@ -21,10 +21,9 @@ MonoBehaviour:
   _attackRate: 1.5
   _stopDistance: 1
   _explosionRadius: 4
-  _explosionDelay: 0.5
-  _explosionEffect: {fileID: 1630820213853087224, guid: 3122a5103e50c8d4f8f16abb6361e53d, type: 3}
+  _explosionDelay: 0.8
+  _explosionEffect: {fileID: 0}
   _projectileSpeed: 10
   _chargeTime: 0.8
   _chargeColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   _fireColor: {r: 1, g: 0, b: 0, a: 1}
-  _nextAttackTime: 0

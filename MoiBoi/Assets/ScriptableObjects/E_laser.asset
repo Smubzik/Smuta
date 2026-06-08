@@ -24,7 +24,6 @@ MonoBehaviour:
   _explosionDelay: 0
   _explosionEffect: {fileID: 0}
   _projectileSpeed: 10
-  _chargeTime: 0.8
+  _chargeTime: 2
   _chargeColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   _fireColor: {r: 1, g: 0, b: 0, a: 1}
-  _nextAttackTime: 0

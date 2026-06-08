@@ -23,4 +23,6 @@ public class EnemyLaserVisual : EnemyVisualBase
         if (_enemyAI != null)
             _enemyAI.OnAttack -= OnAttack;
     }
+
+
 }

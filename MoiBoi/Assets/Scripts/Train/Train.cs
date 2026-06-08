@@ -60,6 +60,7 @@ public class Train : MonoBehaviour
         _isAlive = true;
         
         UpdateHealthUI();
+        RefreshHealthBar();
     }
     
     private void Update()
@@ -81,7 +82,6 @@ public class Train : MonoBehaviour
         }
         
         UpdateHealthUI();
-        
     }
 
     private void FixedUpdate()
@@ -89,11 +89,8 @@ public class Train : MonoBehaviour
         HandleMovement();
     }
 
-
-
     public void TakeDamage(int damage)
     {
-        
         if (_canTakeDamage && _isAlive)
         {
             _canTakeDamage = false;
@@ -111,9 +108,8 @@ public class Train : MonoBehaviour
             Debug.Log($"Урон получен! Здоровье: {_currentHealth}/{_maxHealth}");
             
             UpdateHealthUI();
+            RefreshHealthBar();
             StartCoroutine(DamageRecoveryRoutine());
-
-
         }
         DetectFquarter();
         DetectSquarter();
@@ -127,6 +123,7 @@ public class Train : MonoBehaviour
         _currentHealth = Mathf.Min(_maxHealth, _currentHealth + amount);
         GameData.SavedHealth = _currentHealth;
         UpdateHealthUI();
+        RefreshHealthBar();
         Debug.Log($"Вылечено {amount}. Здоровье: {_currentHealth}/{_maxHealth}");
     }
     
@@ -135,22 +132,26 @@ public class Train : MonoBehaviour
         _currentHealth = Mathf.Min(health, _maxHealth);
         GameData.SavedHealth = _currentHealth;
         UpdateHealthUI();
+        RefreshHealthBar();
     }
     
     public void UpgradeMaxHealth(int bonus)
     {
         _maxHealth += bonus;
-        GameData.BonusMaxHealth += bonus;
-        if (_currentHealth > _maxHealth) _currentHealth = _maxHealth;
+        _currentHealth += bonus;
         GameData.SavedHealth = _currentHealth;
+        GameData.BonusMaxHealth += bonus;
+        
         UpdateHealthUI();
-        Debug.Log($"Макс. здоровье увеличено до {_maxHealth}");
+        RefreshHealthBar();
+        Debug.Log($"Максимальное здоровье увеличено до {_maxHealth}");
     }
     
     public void UpgradeSpeed(float bonus)
     {
         movingSpeed += bonus;
         GameData.BonusSpeed += bonus;
+        Debug.Log($"Скорость увеличена до {movingSpeed}");
     }
     
     public void UpgradeArmor(float bonus)
@@ -164,6 +165,7 @@ public class Train : MonoBehaviour
     {
         healthRegeneration += bonus;
         GameData.BonusRegeneration += bonus;
+        Debug.Log($"Регенерация: {healthRegeneration} HP/сек");
     }
     
     public void ResetToBaseStats()
@@ -175,6 +177,7 @@ public class Train : MonoBehaviour
         if (_currentHealth > _maxHealth) _currentHealth = _maxHealth;
         GameData.SavedHealth = _currentHealth;
         UpdateHealthUI();
+        RefreshHealthBar();
     }
     
     private void UpdateHealthUI()
@@ -182,6 +185,15 @@ public class Train : MonoBehaviour
         if (healthText != null)
         {
             healthText.text = $"{_currentHealth}/{_maxHealth}";
+        }
+    }
+    
+    private void RefreshHealthBar()
+    {
+        HealthBar healthBar = FindObjectOfType<HealthBar>();
+        if (healthBar != null)
+        {
+            healthBar.Refresh();
         }
     }
 
@@ -197,8 +209,15 @@ public class Train : MonoBehaviour
         { 
             _isAlive = false;
             TrainGameInput.Instance.DisableMovement();
+            
+            // Уничтожаем турели (всех типов)
             if (Turret.Instance != null)
                 Turret.Instance.DestroyTurret();
+            if (RapidTurret.Instance != null)
+                RapidTurret.Instance.DestroyTurret();
+            if (LightningTurret.Instance != null)
+                LightningTurret.Instance.DestroyTurret();
+            
             OnPlayerDeath?.Invoke(this, EventArgs.Empty);
             Debug.Log("Игрок умер!");
         }
